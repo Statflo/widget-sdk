@@ -1,0 +1,19 @@
+{
+  "name": "@statflo/widget-sdk",
+  "version": "0.1.0",
+  "description": "SDK for building widgets within Textkit and beyond",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Statflo/widget-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Statflo/widget-sdk/issues"
+  },
+  "homepage": "https://github.com/Statflo/widget-sdk#readme"
+}
