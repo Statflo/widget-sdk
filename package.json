@@ -35,12 +35,13 @@
     "test": "jest --config jestconfig.json --passWithNoTests",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "yarn eslint . --ext .ts,.tsx --quiet",
+    "lint": "yarn eslint . --ext .ts --quiet",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "test-coverage": "yarn test --coverage"
   },
   "files": [
     "dist/**/*"

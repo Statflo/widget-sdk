@@ -35,6 +35,7 @@ export enum DebugLogLevel {
 }
 
 export function createWidgetObj(widgetState: object) {
+  console.log("create widget obj: ", widgetState)
   const state = {};
   const descriptors = {};
 
@@ -46,7 +47,8 @@ export function createWidgetObj(widgetState: object) {
     };
   });
 
-  Object.defineProperties(state, descriptors);
-
-  return state;
+  const newState = Object.defineProperties(state, descriptors);
+  
+  console.log("state: ", newState, Object.entries(widgetState), descriptors)
+  return newState;
 }
