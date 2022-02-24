@@ -35,8 +35,6 @@ export enum DebugLogLevel {
 }
 
 export function createWidgetObj(widgetState: object) {
-  console.log("create widget obj: ", widgetState)
-  const state = {};
   const descriptors = {};
 
   Object.entries(widgetState).forEach(([key, value]) => {
@@ -44,11 +42,9 @@ export function createWidgetObj(widgetState: object) {
     descriptors[key] = {
       value,
       writable: true,
+      enumerable: true,
     };
   });
-
-  const newState = Object.defineProperties(state, descriptors);
   
-  console.log("state: ", newState, Object.entries(widgetState), descriptors)
-  return newState;
+  return Object.defineProperties({}, descriptors);
 }

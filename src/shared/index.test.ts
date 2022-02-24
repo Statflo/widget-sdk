@@ -1,16 +1,17 @@
 import { createWidgetObj } from "."
 
 describe("createWidgetObj", () => {
-  it("should work", () => {
+  it("should create a writable widget state", () => {
       const startingState = {
         prop1: "val1",
         prop2: "val2"
       }
 
-      const result = createWidgetObj(startingState)
-      const desiredResult = {}
+      const result = createWidgetObj(startingState) as any
 
-      console.log("logging: ", result, desiredResult)
-      expect(result).toEqual(desiredResult)
+      expect(result).toEqual(startingState)
+
+      result.prop1 = 10
+      expect(result.prop1).toEqual(10)
   })
 })

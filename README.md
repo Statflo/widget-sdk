@@ -1,0 +1,1 @@
+[![codecov](https://codecov.io/gh/Statflo/widget-sdk/branch/main/graph/badge.svg?token=E2QJ7EUJVZ)](https://codecov.io/gh/Statflo/widget-sdk)

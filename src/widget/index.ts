@@ -1,6 +1,6 @@
-import { ContainerMethods, ContainerPostEventType, TWidgetState, WidgetMethods } from "../shared";
+import { ContainerMethods, ContainerPostEventType, TWidgetState, WidgetMethods, WidgetPostEventType } from "../shared";
 
-import { onMessageFromContainer, postEventFromWidget } from "./misc";
+import { onMessageFromContainer } from "./misc";
 
 
 
@@ -34,7 +34,15 @@ export default class WidgetClient {
     this.window = window
     this.subscribers = new Map();
     this.state = createWidgetState(id);
-    this.postEvent = postEventFromWidget(window, id);
+
+    const topWindow = window.top as Window
+
+    this.postEvent = (event: Partial<WidgetPostEventType>) => {
+      if (event) {
+        topWindow.postMessage({ ...event, id }, "*");
+      }
+    };
+
     this.onMessageHandler = onMessageFromContainer(this.handleEvent);
 
     this.window.addEventListener("message", this.onMessageHandler);

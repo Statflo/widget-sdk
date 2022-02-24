@@ -18,6 +18,7 @@ var DebugLogLevel;
     DebugLogLevel["Debug"] = "debug";
 })(DebugLogLevel = exports.DebugLogLevel || (exports.DebugLogLevel = {}));
 function createWidgetObj(widgetState) {
+    // console.log("create widget obj: ", widgetState)
     var state = {};
     var descriptors = {};
     Object.entries(widgetState).forEach(function (_a) {
@@ -28,7 +29,13 @@ function createWidgetObj(widgetState) {
             writable: true
         };
     });
-    Object.defineProperties(state, descriptors);
+    var newState = Object.defineProperties(state, descriptors);
+    Object.entries(widgetState).forEach(function (_a) {
+        var key = _a[0], value = _a[1];
+        // @ts-ignore
+        state[key] = value;
+    });
+    console.log("state: ", widgetState, newState, descriptors);
     return state;
 }
 exports.createWidgetObj = createWidgetObj;
