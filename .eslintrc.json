@@ -3,7 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "project": "./tsconfig.json" },
   "env": { "es6": true },
-  "ignorePatterns": ["node_modules", "build", "coverage"],
+  "ignorePatterns": ["node_modules", "build", "coverage", "example", "dist"],
   "plugins": ["import", "eslint-comments", "functional"],
   "extends": [
     "eslint:recommended",
@@ -11,8 +11,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
     "plugin:functional/lite",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
   "globals": { "BigInt": true, "console": true, "WebAssembly": true },
   "rules": {
@@ -29,6 +28,16 @@
     "sort-imports": [
       "error",
       { "ignoreDeclarationSort": true, "ignoreCase": true }
-    ]
+    ],
+    "prefer-readonly-type": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "functional/no-class": "off",
+    "functional/prefer-readonly-type": "off",
+    "functional/no-this-expression": "off",
+    "functional/no-mixed-type": "off",
+    "functional/no-throw-statement": "off",
+    "functional/no-return-void": "off",
+    "functional/immutable-data": "off",
+    "functional/no-let": "off"
   }
 }

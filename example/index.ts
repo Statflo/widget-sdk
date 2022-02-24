@@ -1,5 +1,6 @@
-import { ContainerClient, WidgetClient, Helpers } from "../dist/index.js"
 import * as domino from "domino"
+
+import { ContainerClient, Helpers, WidgetClient } from "../dist/index.js"
 
 const myWindow = domino.createWindow('<h1>My page </h1>', 'http://example.com')
 

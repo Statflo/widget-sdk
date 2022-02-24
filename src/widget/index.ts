@@ -1,4 +1,5 @@
 import { ContainerMethods, ContainerPostEventType, TWidgetState, WidgetMethods } from "../shared";
+
 import { onMessageFromContainer, postEventFromWidget } from "./misc";
 
 
@@ -114,6 +115,7 @@ export default class WidgetClient {
   */
   release = () => {
     this.window.removeEventListener("message", this.onMessageHandler);
+
     // @ts-ignore
     this.state = null;
     // @ts-ignore

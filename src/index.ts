@@ -1,6 +1,6 @@
-import WidgetClient from "./widget"
 import ContainerClient from "./container"
 import * as Helpers from "./shared"
+import WidgetClient from "./widget"
 
 export {
   WidgetClient,
