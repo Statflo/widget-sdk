@@ -4,7 +4,7 @@ import { onMessageFromContainer } from "./misc";
 
 
 
-interface TWidgetClientOptions {
+export interface TWidgetClientOptions {
   id: string
   createWidgetState: (id: string) => TWidgetState
   window: Window
@@ -28,8 +28,6 @@ export default class WidgetClient {
     if (!id) {
       throw new Error("Widget id must be provided to WidgetClient constructor");
     }
-
-    console.log("widget client initialized! ", this)
 
     this.window = window
     this.subscribers = new Map();
