@@ -45,7 +45,7 @@ export default class ContainerClient {
     let widgetIframeElement = this.widgets.get(id);
 
     if (!widgetIframeElement) {
-      widgetIframeElement = document.getElementById(id);
+      widgetIframeElement = this.window.document.getElementById(id);
 
       if (!widgetIframeElement) {
         throw new Error(`Unable to post(). Could not find Iframe element for widget id '${id}'`);

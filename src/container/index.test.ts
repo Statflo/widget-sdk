@@ -104,6 +104,12 @@ describe("widget", () => {
     expect(console.log).toBeCalledWith(`ContainerClient: invoking post() with event: ${JSON.stringify(event)}`)
   })
 
+  it("should throw on postevent without iframe registered", () => {
+    expect(() => {
+      workingClient.postEvent("id", null as any)
+    }).toThrow()
+  })
+
 
 
   // it("should handle event with state update and subscriber", () => {
