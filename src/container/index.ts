@@ -27,16 +27,16 @@ export default class ContainerClient {
   window
 
   constructor(opts: ContainerClientOptions) {
+    if (!opts.window) {
+      throw Error("window must be provided to container client constructor")
+    }
+
     this.subscribers = new Map();
     this.widgets = new Map();
     this.states = new Map();
-    this.window = opts?.window
+    this.window = opts.window
     this.logLevel = opts?.logs ?? DebugLogLevel.None;
     this.onMessageHandler = onContainerMessage(this.handleEvent);
-
-    console.log("container client initialized! ", this)
-
-
     this.window.addEventListener("message", this.onMessageHandler);
   }
 
