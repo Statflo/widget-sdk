@@ -110,70 +110,196 @@ describe("widget", () => {
     }).toThrow()
   })
 
+  it("should throw error if createWidget is called on a widget id that already exist", () => {
+    expect(() => {
+      workingClient.states.set("id", {})
+      workingClient.createWidget({ id: "id" })
+    }).toThrow("Unable to create widget. A widget with the id 'id' already exists.")
+  })
+
+  it("should log debugger when widget doesn't exist", () => {
+    const thisWindow = {
+      addEventListener: jest.fn(),
+      document:{
+        getElementById: jest.fn(() => null)
+      }
+    }
+
+    console.log = jest.fn()
+    const client = new ContainerClient({ window: thisWindow, logs: DebugLogLevel.Debug } as any)
+
+    client.createWidget({id: "id"})
+
+    expect(console.log).toBeCalledWith("ContainerClient: widget iframe element not found with id: ", "id")
+  })
+
+  it("should handle event setstate with debugger", () => {
+    const event = {
+      method: WidgetMethods.setState,
+      name: "eventName",
+      payload: {
+        property: 'hello',
+        value: "world"
+      },
+      id: "id",
+    }  
+    const client = new ContainerClient({ window: testWindow, logs: DebugLogLevel.Debug})
+    console.log = jest.fn()
+    client.states.set("id", {})
+    client.handleEvent(event)
+    expect(console.log).toBeCalledWith(`ContainerClient: updating local widget state for: ${event.payload.property} = ${event.payload.value} in widget ${event.id}`)
+    expect(client.states.get("id")).toEqual({ hello: "world" })
+  })
 
 
-  // it("should handle event with state update and subscriber", () => {
-  //   const event = {
-  //       method: ContainerMethods.setState,
-  //       name: ContainerMethods.setState,
-  //       id: "id",
-  //       payload: {
-  //         property: "myProp",
-  //         value: "myValue"
-  //       }
-  //   }
+  it("should call subscribers on handleevent", () => {
+    const event = {
+      method: WidgetMethods.setState,
+      name: "eventName",
+      payload: {
+        property: 'hello',
+        value: "world"
+      },
+      id: "id",
+    }  
 
-  //   const cb = jest.fn()
+    console.log = jest.fn()
+    workingClient.states.set("id", {})
 
+    workingClient.subscribers.set(WidgetMethods.setState, jest.fn())
+    workingClient.subscribers.set("eventName", jest.fn())
 
-  //   workingClient.handleEvent(event)
-  //   expect(cb).not.toBeCalled()
+    workingClient.handleEvent(event)
+    expect(workingClient.subscribers.get(WidgetMethods.setState)).toBeCalledWith(event)
+    expect(workingClient.subscribers.get("eventName")).toBeCalledWith(event)
 
-  //   workingClient.on(ContainerMethods.setState, cb)
-  //   workingClient.handleEvent(event)
+  })
+
+  it("should handle setstate with debugger and callback", () => {
+    const event = {
+      method: WidgetMethods.postForward,
+      name: "eventName",
+      payload: "mypayload",
+      id: "id",
+      recipientId: "otherid"
+    }
+
+    console.log = jest.fn()
+    const client = new ContainerClient({ window: testWindow, logs: DebugLogLevel.Debug})
+    client.states.set("id", {})
+    client.subscribers.set(WidgetMethods.setState, jest.fn());
     
-  //   expect(workingClient.state["myProp"]).toEqual("myValue")
-  //   expect(cb).toHaveBeenCalledWith(event)
-  // })
+    client.postEvent = jest.fn()
+    client.setState("id", "hello", "world")
 
-  // it("should handle setState", () => {
-  //   workingClient.postEvent = jest.fn()
-  //   workingClient.setState("prop", "10")
+    const setStateEvent = {
+      method: ContainerMethods.setState,
+      name: ContainerMethods.setState,
+      payload: {
+        property: "hello",
+        value: "world"
+      },
+    };
 
-  //   expect(workingClient.postEvent).toHaveBeenCalledWith({
-  //     method: WidgetMethods.setState,
-  //     name: WidgetMethods.setState,
-  //     payload: {
-  //       property: "prop",
-  //       value: "10",
-  //     },
-  //   })
+    const syntheticEvent = {
+      method: WidgetMethods.setState,
+      name: WidgetMethods.setState,
+      id: "id",
+      payload: {
+        property: "hello",
+        value: "world"
+      },
+    };
 
-  //   expect(workingClient.state["prop"]).toEqual("10")
-  // })
+    expect(client.postEvent).toBeCalledWith("id", setStateEvent)
+    expect(console.log).toBeCalledWith(`ContainerClient: invoking setState() with event: ${JSON.stringify(setStateEvent)}`)
+    expect(client.subscribers.get(WidgetMethods.setState)).toBeCalledWith(syntheticEvent)
+  })
 
-  // it("should handle post", () => {
-  //   workingClient.postEvent = jest.fn()
-  //   workingClient.post("name", "value")
+  it("should handle postforward with debugger", () => {
+    const event = {
+      method: WidgetMethods.postForward,
+      name: "eventName",
+      payload: "mypayload",
+      id: "id",
+      recipientId: "otherid"
+    }
 
-  //   expect(workingClient.postEvent).toHaveBeenCalledWith({
-  //     method: WidgetMethods.post,
-  //     name: "name",
-  //     payload: "value"
-  //   })
-  // })
+    console.log = jest.fn()
+    const client = new ContainerClient({ window: testWindow, logs: DebugLogLevel.Debug})
+    client.post = jest.fn()
+    client.handleEvent(event)
 
-  // it("should handle postForward", () => {
-  //   workingClient.postEvent = jest.fn()
-  //   workingClient.postForward("name", "value", "id")
+    expect(client.post).toBeCalledWith(event.recipientId, event.name, event.payload)
+    expect(console.log).toHaveBeenCalledWith("ContainerClient: postForward invoked with with: ", event.recipientId, event.name, event.payload)
+  })
 
-  //   expect(workingClient.postEvent).toHaveBeenCalledWith({
-  //     method: WidgetMethods.postForward,
-  //     name: "name",
-  //     payload: "value",
-  //     recipientId: "id"
-  //   })
-  // })
+  it("should throw error on handle event without preexisting state", () => {
+    const event = {
+      method: WidgetMethods.post,
+      name: "eventName",
+      payload: "mypayload",
+      id: "id",
+      recipientId: "otherid"
+    }
+
+    expect(() => {
+      workingClient.handleEvent(event)
+    }).toThrow(`Unable to handle event. Receiving event for widget id '${event.id}' which has not yet been initialized within the container`)
+  })
+
+  
+  it("should create widget", () => {
+    const iframe = {
+      contentWindow: {
+        postMessage: jest.fn()
+      }
+    }
+
+    const thisWindow = {
+      addEventListener: jest.fn(),
+      document:{
+        getElementById: jest.fn(() => iframe)
+      }
+    }
+
+    const client = new ContainerClient({ window: thisWindow } as any)
+
+    client.createWidget({id: "id"})
+
+    expect(client.widgets.get("id")).toEqual(iframe)
+  })
+
+  it("should throw when id is not provided within state", () => {
+    expect(() => {
+      workingClient.createWidget({ })
+    }).toThrow()
+  })
+
+  it("should find iframe widget and post event to it", () => {
+    const iframe = {
+      contentWindow: {
+        postMessage: jest.fn()
+      }
+    }
+
+    const thisWindow = {
+      addEventListener: jest.fn(),
+      document:{
+        getElementById: jest.fn(() => iframe)
+      }
+    }
+
+    const client = new ContainerClient({ window: thisWindow } as any)
+    client.states.set("id", "domain")
+
+    const event = { someEvent: "someValue" }
+
+    client.postEvent("id", event as any)
+
+    expect(thisWindow.document.getElementById).toBeCalled()
+    expect(iframe.contentWindow.postMessage).toBeCalled()
+  })
 
   it("should throw error when calling setState() without state", () => {
     expect(() => {

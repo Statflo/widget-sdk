@@ -35,7 +35,7 @@ export default class ContainerClient {
     this.widgets = new Map();
     this.states = new Map();
     this.window = opts.window
-    this.logLevel = opts?.logs ?? DebugLogLevel.None;
+    this.logLevel = opts.logs ?? DebugLogLevel.None;
     this.onMessageHandler = onContainerMessage(this.handleEvent);
     this.window.addEventListener("message", this.onMessageHandler);
   }
@@ -70,7 +70,7 @@ export default class ContainerClient {
       throw new Error(`Unable to create widget. A widget with the id '${id}' already exists.`);
     }
 
-    const widgetElement = document.getElementById(id);
+    const widgetElement = this.window.document.getElementById(id);
 
     if (widgetElement) {
       this.widgets.set(id, widgetElement);
