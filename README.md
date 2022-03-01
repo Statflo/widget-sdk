@@ -3,3 +3,5 @@
 ![CI/CD](https://github.com/statflo/widget-sdk/actions/workflows/main.yml/badge.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Statflo/widget-sdk/issues)
 
+
+[View documentation wiki](https://github.com/Statflo/widget-sdk/wiki)
