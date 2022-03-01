@@ -56,7 +56,7 @@ export default class ContainerClient {
 
     const { widgetDomain } = this.states.get(id);
 
-    widgetIframeElement.contentWindow.postMessage(event, widgetDomain);
+    widgetIframeElement.contentWindow.postMessage(event, widgetDomain || "*");
   }
 
   createWidget = (state: TWidgetState) => {
