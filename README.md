@@ -10,23 +10,15 @@
 
 ## Installation
 ---
-NPM
+- NPM `npm i @statflo/widget-sdk`
+- YARN `yarn @statflo/widget-sdk`
 
-`npm i @statflo/widget-sdk`
-
-YARN 
-
-`yarn @statflo/widget-sdk`
-
-
-<br>
 <br>
 
 ## Initializing clients
 ----
 It's recommended to initialize a single instance of a widget or container client then export that instance for the rest of your application to consume. See below.
 
-<br>
 
 ### Widget initialization
 
@@ -40,8 +32,6 @@ export const client = new WidgetClient({
 });
 ```
 
-<br>
-
 ### Container initialization
 ```
 import { ContainerClient } from "@statflo/widget-sdk";
@@ -50,7 +40,63 @@ export const widgetContainerClient = new ContainerClient({window});
 ```
 
 <br>
+
+## Managing widget state as the container client
+
+```
+import { widgetContainerClient } from "../local/example/path"
+import { WidgetMethods } from "@statflo/widget-sdk/dist/shared";
+
+
+// step 1 - initialize widget state
+const initialWidgetState = { id: "my_widget" }
+
+// step 2 - initialize widget representation within container
+widgetContainerClient.createWidget(initialWidgetState)
+
+// step 3 - update widget state
+widgetContainerClient.setState("my_widget", "someProperty", 50)
+
+// Step 4 - subscribe to state changes from the remote widget
+widgetContainerClient.on(WidgetMethods.setState, (e) => {
+  const { property, value } = e
+
+  // do something with property and value
+  ... 
+})
+
+
+// Optional - access state directly
+widgetContainerClient.states.get("myWidget).someProperty // returns 50
+```
+
+## Managing widget state as the widget client
+
+```
+import { client } from "../local/example/path"
+import { ContainerMethods } from "@statflo/widget-sdk/dist/shared";
+
+
+// step 1 - state was initialized with the creation of the new widgetClient(...)
+
+// step 2 - update widget state
+client.setState("my_widget", "someProperty", 50)
+
+// Step 3 - subscribe to state changes from the remote container
+widget.on(ContainerMethods.setState, (e) => {
+  const { property, value } = e
+
+  // do something with property and value
+  ... 
+})
+
+
+// Optional - access state directly
+client.state.someProperty // returns 50
+```
+
 <br>
+
 
 ## Security 
 ---
