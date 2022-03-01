@@ -6,3 +6,4 @@ yarn.lock
 src/**.js
 
 yarn-error.log
+example/**/*.js
