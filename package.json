@@ -1,6 +1,6 @@
 {
   "name": "@statflo/widget-sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "SDK for building widgets within Textkit and beyond",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
