@@ -112,3 +112,14 @@ By default, the target origin will be `"*"`. To set a secure target origin, set 
 
 - `containerDomain` - the domain of where container app is hosted on the web.
 
+**Final Caveats**
+
+- The `.on()` method for both clients only supports a single registered callback. Calling `.on()` on the same event or method will overwrite a previous callback with the newer one.
+  - Multiple callback tenants can be implemented via one callback like so:
+  ```
+     client.on(ContainerMethods.setState, e => {
+       callbackOne(e)
+       callbackTwo(e)
+       ...
+     })
+  ```
