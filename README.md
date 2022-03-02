@@ -108,7 +108,7 @@ The primary concern in this package is the target origin of the `window.postMess
 
 By default, the target origin will be `"*"`. To set a secure target origin, set the following two properties within the widget state:
 
-- `widgetDomain` - the domain where the widget app is hostest on the web.
+- `widgetDomain` - the domain where the widget app is hosted on the web.
 
 - `containerDomain` - the domain of where container app is hosted on the web.
 
