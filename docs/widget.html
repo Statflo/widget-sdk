@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Example Widget</title>
+  <meta name="description" content="A widget sdk">
+  <meta name="author" content="Statflo">
+
+  <meta property="og:title" content="Example Widget">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="A widget SDK">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+  <script type="text/javascript">
+    // onload is executed after the DOM is finished loading, so all prerequisite DOM nodes will certainly exist.
+    window.onload = function() {
+        console.log("Container client: ", window.Statflo)
+
+        function getRandomArbitrary(min, max) {
+          return Math.floor(Math.random() * (max - min) + min)
+        }
+
+        const widgetClient = new window.Statflo.WidgetClient({
+          id: window.name,
+          window,
+          createWidgetState: (id) => ({ id, timer: getRandomArbitrary(0, 1000) })
+        })
+
+        setInterval(() => {
+          widgetClient.setState("timer", widgetClient.state.timer + 1)
+          
+          document.getElementById("timer").innerHTML = widgetClient.state.timer
+        }, 1000)
+
+        console.log('widget client: ', widgetClient)
+    }
+  </script>
+
+</head>
+
+<body>
+  Demo Timer Widget
+
+  <div id="timer"></div>
+
+  <script src="./bundle.js?3" defer></script>
+</body>
+</html>

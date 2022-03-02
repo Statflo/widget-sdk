@@ -17,12 +17,56 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+  <script type="text/javascript">
+    // onload is executed after the DOM is finished loading, so all prerequisite DOM nodes will certainly exist.
+    window.onload = function() {
+        console.log("Container client: ", window.Statflo)
+
+        function getRandomArbitrary(min, max) {
+          return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        const client = new window.Statflo.ContainerClient({ window })
+
+        client.createWidget({ id: "timer-one" })
+        client.createWidget({ id: "timer-two" })
+        client.createWidget({ id: "timer-three" })
+
+
+        client.on(window.Statflo.Helpers.WidgetMethods.setState, (e) => {
+          const { id, payload: { property, value }} = e
+
+          document.getElementById(`${id}--label`).innerHTML = value
+        })
+
+        console.log('widget client: ', widgetClient)
+    }
+  </script>
+
 </head>
 
 <body>
   Hello World
   <!-- your content here... -->
-  <script src="js/scripts.js"></script>
+
+  <div id="timer-one--label">
+
+  </div>
+  <div id="timer-two--label">
+    
+  </div>
+  <div id="timer-three--label">
+    
+  </div>
+
+  <!-- Using JS scripts to add query params to automatically cache bust widget.html -->
+  <script type="text/javascript">
+    document.write(`<iframe name="timer-one" id="timer-one" src="./widget.html?${Math.random()}"></iframe>`)
+    document.write(`<iframe name="timer-two" id="timer-two" src="./widget.html?${Math.random()}"></iframe>`)
+    document.write(`<iframe name="timer-three" id="timer-three" src="./widget.html?${Math.random()}"></iframe>`)
+    document.write(`<script src="./bundle.js?${Math.random()}" defer><\/script>`)
+  </script>
 </body>
 </html>
