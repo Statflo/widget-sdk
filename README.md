@@ -5,7 +5,7 @@
 
 
 # [View documentation](https://github.com/Statflo/widget-sdk/wiki)
-
+# [View demo](https://statflo.github.io/widget-sdk/)
 
 
 ## Installation
