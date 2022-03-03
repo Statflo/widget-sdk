@@ -38,7 +38,7 @@
     "start:gh-pages": "cd ./docs && http-server",
     "test": "jest --config jestconfig.json --passWithNoTests",
     "build": "tsc",
-    "build:gh-pages": "browserify ./docs/main.js --standalone WidgetSDK > ./docs/bundle.js",
+    "build:gh-pages": "yarn build && cp -r ./dist ./docs && browserify ./docs/main.js --standalone WidgetSDK > ./docs/bundle.js",
     "lint": "yarn eslint . --ext .ts --quiet",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",

@@ -30,9 +30,9 @@
 
         const client = new window.Statflo.ContainerClient({ window })
 
-        client.createWidget({ id: "timer-one" })
-        client.createWidget({ id: "timer-two" })
-        client.createWidget({ id: "timer-three" })
+        client.createWidget({ id: "one" })
+        client.createWidget({ id: "two" })
+        client.createWidget({ id: "three" })
 
 
         client.on(window.Statflo.Helpers.WidgetMethods.setState, (e) => {
@@ -41,32 +41,61 @@
           document.getElementById(`${id}--label`).innerHTML = value
         })
 
-        console.log('widget client: ', widgetClient)
+        window.values = {
+          selectedWidget: null,
+        }
+        window.functions = {
+          resetTimer: () => {
+            client.setState(window.values.selectedWidget, "timer", 0)
+          },
+          post: () => {
+            console.log("window: ", window.values)
+            client.post(window.values.selectedWidget, "customPost", document.getElementById("post-input").value)
+          }
+        }
     }
   </script>
-
 </head>
 
 <body>
-  Hello World
+  Three widget timers: <br /><br />
+  One: <span id="one--label"></span><br />
+  Two: <span id="two--label"></span><br />
+  Three: <span id="three--label"></span><br /><br /> 
+
   <!-- your content here... -->
+  Select Widget: <br />
+  <label for="one">One</label><input type="radio" name="widget" value="one" id="one-radio"><br />
+  <label for="two">Two</label><input type="radio" name="widget" value="two" id="two-radio"><br />
+  <label for="three">Three</label><input type="radio" name="widget" value="three" id="three-radio"><br />
 
-  <div id="timer-one--label">
+  <button id="reset">Reset timer</button>
 
-  </div>
-  <div id="timer-two--label">
-    
-  </div>
-  <div id="timer-three--label">
-    
-  </div>
 
+  <br />
+  <br />
+  <button id="poster">Post</button>
+  <input name="input" id="post-input" placeholder="">
+
+  <br /><br />
   <!-- Using JS scripts to add query params to automatically cache bust widget.html -->
   <script type="text/javascript">
-    document.write(`<iframe name="timer-one" id="timer-one" src="./widget.html?${Math.random()}"></iframe>`)
-    document.write(`<iframe name="timer-two" id="timer-two" src="./widget.html?${Math.random()}"></iframe>`)
-    document.write(`<iframe name="timer-three" id="timer-three" src="./widget.html?${Math.random()}"></iframe>`)
+    document.write(`<iframe name="one" id="one" src="./widget.html?${Math.random()}" height="600px"></iframe>`)
+    document.write(`<iframe name="two" id="two" src="./widget.html?${Math.random()}" height="600px"></iframe>`)
+    document.write(`<iframe name="three" id="three" src="./widget.html?${Math.random()}" height="600px"></iframe>`)
     document.write(`<script src="./bundle.js?${Math.random()}" defer><\/script>`)
   </script>
+
+<script type="text/javascript">
+    document.getElementById("one-radio").addEventListener("click", () => window.values.selectedWidget = "one")
+    document.getElementById("two-radio").addEventListener("click", () => window.values.selectedWidget = "two")
+    document.getElementById("three-radio").addEventListener("click", () => window.values.selectedWidget = "three")
+    
+    document.getElementById("reset").addEventListener("click", () => window.functions.resetTimer())
+    document.getElementById("poster").addEventListener("click", () => window.functions.post())
+
+
+</script>
+
 </body>
 </html>

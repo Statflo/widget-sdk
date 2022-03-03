@@ -40,6 +40,22 @@
           document.getElementById("timer").innerHTML = widgetClient.state.timer
         }, 1000)
 
+        widgetClient.on("customPost", (e) => {
+          var { payload } = e
+
+          document.getElementById("post-data").innerHTML += `timestamp: ${widgetClient.state.timer}, payload: ${payload} <br />`
+        })
+
+        window.values = {
+          selectedWidget: null,
+        }
+        window.functions = {
+          postForward: () => {
+            console.log("window: ", window.values)
+            widgetClient.postForward("customPost", document.getElementById("post-input").value, window.values.selectedWidget)
+          }
+        }
+
         console.log('widget client: ', widgetClient)
     }
   </script>
@@ -47,10 +63,35 @@
 </head>
 
 <body>
-  Demo Timer Widget
-
-  <div id="timer"></div>
-
+  Timer widget: <span id="timer"></span>
+  <br />
+    <!-- your content here... -->
+    Select Widget: <br />
+    <label for="one">One</label><input type="radio" name="widget" value="one" id="one-radio"><br />
+    <label for="two">Two</label><input type="radio" name="widget" value="two" id="two-radio"><br />
+    <label for="three">Three</label><input type="radio" name="widget" value="three" id="three-radio"><br />  
+  
+    <br />
+    <br />
+    <button id="poster">post forward</button>
+    <input name="input" id="post-input" placeholder="">
+  <br />
+    
+  Post Data:<br />
+  <span id="post-data"></span>
   <script src="./bundle.js?3" defer></script>
+
+
+
+<script type="text/javascript">
+  document.getElementById("one-radio").addEventListener("click", () => window.values.selectedWidget = "one")
+  document.getElementById("two-radio").addEventListener("click", () => window.values.selectedWidget = "two")
+  document.getElementById("three-radio").addEventListener("click", () => window.values.selectedWidget = "three")
+  
+  document.getElementById("poster").addEventListener("click", () => window.functions.postForward())
+
+
+</script>
+
 </body>
 </html>
