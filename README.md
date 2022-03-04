@@ -4,8 +4,8 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Statflo/widget-sdk/issues)
 
 
-# [View documentation](https://github.com/Statflo/widget-sdk/wiki)
 # [View demo](https://statflo.github.io/widget-sdk/)
+# [View documentation](https://github.com/touchlesscode/widget-sdk/wiki)
 
 
 ## Installation
