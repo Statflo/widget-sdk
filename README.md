@@ -3,123 +3,106 @@
 ![CI/CD](https://github.com/statflo/widget-sdk/actions/workflows/main.yml/badge.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Statflo/widget-sdk/issues)
 
-
-# [View demo](https://statflo.github.io/widget-sdk/)
-# [View documentation](https://github.com/touchlesscode/widget-sdk/wiki)
-
-
 ## Installation
----
-- NPM `npm i @statflo/widget-sdk`
-- YARN `yarn @statflo/widget-sdk`
 
-<br>
-
-## Initializing clients
-----
-It's recommended to initialize a single instance of a widget or container client then export that instance for the rest of your application to consume. See below.
-
-
-### Widget initialization
-
+```bash
+npm install @statflo/widget-sdk # or yarn add @statflo/widget-sdk
 ```
-import { WidgetClient } from "@statflo/widget-sdk";
 
-export const client = new WidgetClient({ 
-  id: "my widget",
-  window,
-  createWidgetState: (id) => ({ id }),
+Please see our [Examples](https://github.com/Statflo/widget-sdk/tree/main/examples).
+
+## Initializing the widget store
+
+### Native
+
+```javascript
+import useWidgetStore from "@statflo/widget-sdk";
+```
+
+### React
+
+```typescript
+import useWidgetStore from "@statflo/widget-sdk";
+import create from "zustand";
+
+const useBoundWidgetStore = create(useWidgetStore);
+```
+
+## Publishing an event
+
+### Native
+
+```javascript
+import { WidgetEvent } from "@statflo/widget-sdk";
+
+const { publishEvent } = useWidgetStore.getState();
+
+publishEvent(new WidgetEvent("MESSAGE_UPDATED", "<YOUR MESSAGE>"));
+```
+
+### React
+
+```typescript
+import { WidgetEvent } from "@statflo/widget-sdk";
+
+const { publishEvent } = useBoundWidgetStore((state) => state);
+
+useEffect(() => {
+  // This event only fires on component initialization
+  publishEvent(new WidgetEvent("MESSAGE_UPDATED", "<YOUR MESSAGE>"));
+}, []);
+```
+
+## Listening to an event
+
+### Native
+
+```javascript
+useWidgetStore.subscribe((state) => {
+  const latest = state.getLatestEvent();
+
+  if (latest) {
+    switch (latest.type) {
+      case "MESSAGE_UPDATED":
+        // ...
+        break;
+    }
+  }
 });
 ```
 
-### Container initialization
-```
-import { ContainerClient } from "@statflo/widget-sdk";
+### React
 
-export const widgetContainerClient = new ContainerClient({window});
-```
+```typescript
+const { events, getLatestEvent } = useBoundWidgetStore((state) => state);
 
-<br>
+useEffect(() => {
+  const latest = getLatestEvent();
 
-## Managing widget state as the container client
+  if (!latest) {
+    return;
+  }
 
-```
-import { widgetContainerClient } from "../local/example/path"
-import { WidgetMethods } from "@statflo/widget-sdk/dist/shared";
-
-
-// step 1 - initialize widget state
-const initialWidgetState = { id: "my_widget" }
-
-// step 2 - initialize widget representation within container
-widgetContainerClient.createWidget(initialWidgetState)
-
-// step 3 - update widget state
-widgetContainerClient.setState("my_widget", "someProperty", 50)
-
-// Step 4 - subscribe to state changes from the remote widget
-widgetContainerClient.on(WidgetMethods.setState, (e) => {
-  const { property, value } = e
-
-  // do something with property and value
-  ... 
-})
-
-
-// Optional - access state directly
-widgetContainerClient.states.get("myWidget).someProperty // returns 50
+  switch (latest.type) {
+    case "MESSAGE_UPDATED":
+      // ...
+      break;
+  }
+}, [events]);
 ```
 
-## Managing widget state as the widget client
+## Events API
 
-```
-import { client } from "../local/example/path"
-import { ContainerMethods } from "@statflo/widget-sdk/dist/shared";
+The following events are supported:
 
+TBD
 
-// step 1 - state was initialized with the creation of the new widgetClient(...)
+## Security
 
-// step 2 - update widget state
-client.setState("my_widget", "someProperty", 50)
-
-// Step 3 - subscribe to state changes from the remote container
-widget.on(ContainerMethods.setState, (e) => {
-  const { property, value } = e
-
-  // do something with property and value
-  ... 
-})
-
-
-// Optional - access state directly
-client.state.someProperty // returns 50
-```
-
-<br>
-
-
-## Security 
----
 To view all MDN's `window.postMessage()` security concerns [click here](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#security_concerns).
 
-The primary concern in this package is the target origin of the `window.postMessage()` API as described by MDN: 
+The primary concern in this package is the target origin of the `window.postMessage()` API as described by MDN:
 
-> Always specify an exact target origin, not *, when you use postMessage to send data to other windows. A malicious site can change the location of the window without your knowledge, and therefore it can intercept the data sent using postMessage.
+> Always specify an exact target origin, not \*, when you use postMessage to send data to other windows. A malicious site can change the location of the window without your knowledge, and therefore it can intercept the data sent using postMessage.
 
-By default, the target origin will be `"*"`. To set a secure target origin, set the following two properties within the widget state:
-
-- `widgetDomain` - the domain where the widget app is hosted on the web.
-
-- `containerDomain` - the domain of where container app is hosted on the web.
-
-**Final Caveats**
-
-- The `.on()` method for both clients only supports a single registered callback. Calling `.on()` on the same event or method will overwrite a previous callback with the newer one.
-  - Multiple callback tenants can be implemented via one callback like so:
-  ```
-     client.on(ContainerMethods.setState, e => {
-       callbackOne(e)
-       callbackTwo(e)
-       ...
-     })
-  ```
+By default, the target origin will be the url of the widget you register with the Statflo API.
