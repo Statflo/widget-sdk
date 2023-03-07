@@ -6,7 +6,7 @@ export interface Widget {
   id: string;
   name: string;
   url: string;
-  widgetType: "iframe" | "native";
+  type: "iframe" | "native";
   remote?: {
     module: string;
     component: string;
@@ -72,7 +72,7 @@ const useWidgetStore = create<WidgetState>()((set, get) => {
       const { id, type, data } = e;
 
       get()
-        .widgets.filter((widget) => widget.widgetType === "iframe")
+        .widgets.filter((widget) => widget.type === "iframe")
         .forEach((widget) => {
           const iframe = document.getElementById(
             widget.id
