@@ -1,6 +1,6 @@
 {
   "name": "@statflo/widget-sdk",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "SDK for building widgets with Statflo and beyond",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -34,7 +34,7 @@
     "iframe-resizer": "^4.3.2",
     "typescript": "^4.9.3",
     "uuid": "^9.0.0",
-    "zustand": "^4.1.4"
+    "zustand": "^4.3.3"
   },
   "devDependencies": {
     "@types/jest": "^29.2.5",

@@ -7,11 +7,10 @@ export interface Widget {
   name: string;
   url: string;
   type: "iframe" | "native";
-  remote?: {
+  native?: {
     module: string;
     component: string;
   };
-  component?: string;
 }
 
 export interface WidgetState {
