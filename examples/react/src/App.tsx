@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "iframe-resizer-react";
-import create from "zustand";
+import { create } from "zustand";
 import "./App.css";
 
 import useWidgetStore, { WidgetEvent } from "@statflo/widget-sdk";

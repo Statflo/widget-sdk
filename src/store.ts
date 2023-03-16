@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import create from "zustand/vanilla";
+import { createStore } from "zustand/vanilla";
 import "iframe-resizer/js/iframeResizer.contentWindow";
 
 export interface Widget {
@@ -37,7 +37,7 @@ export class WidgetEvent<T> {
   }
 }
 
-const useWidgetStore = create<WidgetState>()((set, get) => {
+const useWidgetStore = createStore<WidgetState>()((set, get) => {
   const listener = (event: MessageEvent) => {
     const { data } = event;
 
