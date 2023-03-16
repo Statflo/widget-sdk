@@ -23,7 +23,7 @@ import useWidgetStore from "@statflo/widget-sdk";
 
 ```typescript
 import useWidgetStore from "@statflo/widget-sdk";
-import create from "zustand";
+import { create } from "zustand";
 
 const useBoundWidgetStore = create(useWidgetStore);
 ```
