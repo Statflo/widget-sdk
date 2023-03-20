@@ -8,8 +8,8 @@ export interface Widget {
   url: string;
   type: "iframe" | "native";
   native?: {
+    remote: string;
     module: string;
-    component: string;
   };
 }
 
