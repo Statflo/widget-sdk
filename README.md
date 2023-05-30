@@ -93,9 +93,83 @@ useEffect(() => {
 
 ## Events API
 
-The following events are supported:
+### Outgoing Events
 
-TBD
+The following events can be published from the widget so that the app can trigger certain functionality.
+
+#### EXPAND_IFRAME
+
+```
+type: "EXPAND_IFRAME"
+data: boolean
+```
+
+Returns true or false depending on whether the iframe should be considered in an expanded state or not. If true is returned this will trigger the `Container Height` event.
+
+#### SHOW_ALERT
+
+```
+type: "SHOW_ALERT"
+data: AlertDetails
+```
+
+Returns details for an alert to be shown by the app. The alert will appear in the bottom right corner of the screen and automatically disappear after 5 seconds.
+
+```typescript
+type AlertDetails = {
+  status: "info" | "warning" | "dark" | "light" | "white" | "neutral" | "success" | "error";
+  text: string;
+}
+```
+
+### Incoming Events
+
+The following event types can be listened to by the widget.
+
+#### User Authenticated
+
+```
+type: "USER_AUTHENTICATED"
+data: User
+```
+
+Returns details about the user currently logged into the app. This event is triggered upon initial authentication.
+
+```typescript
+type User = {
+  carrier_id: number;
+  dealer_id: number;
+  email: string;
+  language: string;
+}
+```
+
+#### Authentication Token
+
+```
+type: "AUTHENTICATION_TOKEN"
+data: string
+```
+
+Returns the authentication token for the current user. This event is triggered upon initial authentication.
+
+#### Current Account ID (Ban ID)
+
+```
+type: "CURRENT_ACCOUNT_ID"
+data: string
+```
+
+Returns the account ID for the conversation that the user currently has open. This event will trigger every time the user changes which conversation they have open.
+
+#### Container Height
+
+```
+type: "CONTAINER_HEIGHT"
+data: number
+```
+
+Returns a number that represents the height (in px) of the element the widget is contained within. This event is triggered by the widget publishing an `Expand iFrame` event.
 
 ## Security
 
