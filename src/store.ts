@@ -5,11 +5,16 @@ import "iframe-resizer/js/iframeResizer.contentWindow";
 export interface Widget {
   id: string;
   name: string;
+  label: string;
   url: string;
   type: "iframe" | "native";
   native?: {
     remote: string;
     module: string;
+  };
+  options?: {
+    defaultExpanded?: boolean;
+    priority?: number;
   };
 }
 

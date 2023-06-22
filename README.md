@@ -97,7 +97,7 @@ useEffect(() => {
 
 The following events can be published from the widget so that the app can trigger certain functionality.
 
-#### EXPAND_IFRAME
+#### Expand Iframe
 
 ```
 type: "EXPAND_IFRAME"
@@ -106,7 +106,7 @@ data: boolean
 
 Returns true or false depending on whether the iframe should be considered in an expanded state or not. If true is returned this will trigger the `Container Height` event.
 
-#### SHOW_ALERT
+#### Show Alert
 
 ```
 type: "SHOW_ALERT"
@@ -121,6 +121,24 @@ type AlertDetails = {
   text: string;
 }
 ```
+
+#### Append Message
+
+```
+type: "APPEND_MESSAGE"
+data: string
+```
+
+Returns a string that will be appended to the contents of the chat message input. **Used in Sendables**
+
+#### Replace Message
+
+```
+type: "REPLACE_MESSAGE"
+data: string
+```
+
+Returns a string that will replace the contents of the chat message input. **Used in Sendables**
 
 ### Incoming Events
 
