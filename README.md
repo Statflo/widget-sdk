@@ -93,6 +93,8 @@ useEffect(() => {
 
 ## Events API
 
+Below are the details for all the events that are currently supported by Statflo.
+
 ### Outgoing Events
 
 The following events can be published from the widget so that the app can trigger certain functionality.

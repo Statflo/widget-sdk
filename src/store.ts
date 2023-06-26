@@ -5,7 +5,7 @@ import "iframe-resizer/js/iframeResizer.contentWindow";
 export interface Widget {
   id: string;
   name: string;
-  label: string;
+  label?: string;
   url: string;
   type: "iframe" | "native";
   native?: {

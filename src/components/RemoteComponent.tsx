@@ -4,8 +4,8 @@ import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { UseBoundStore } from "zustand/react";
 import { Mutate, StoreApi } from "zustand/vanilla";
 
-import { loadRemoteModule } from "../lib/module-federation";
 import { Widget, WidgetState } from "../store";
+import { loadComponent } from "../utils";
 
 type WidgetProps = {
   widget: Widget;
@@ -42,14 +42,16 @@ export const RemoteComponent: FC<WidgetProps> = ({
 
   useEffect(() => {
     if (widget.type === "native") {
-      if (widget.native && widget.native.module && widget.native.remote) {
-        const remote = widget.native.remote;
-        const module = widget.native.module;
-        const url = widget.url;
+      setComponent(
+        React.lazy(
+          loadComponent(
+            widget.native?.module,
+            widget.url,
+            widget.native?.module
+          )
+        )
+      );
 
-        const lazyFactory = () => loadRemoteModule(remote, module, url);
-        setComponent(React.lazy(lazyFactory));
-      }
       setLoading(false);
     }
   }, []);
