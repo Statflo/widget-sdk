@@ -103,10 +103,13 @@ The following events can be published from the widget so that the app can trigge
 
 ```
 type: "EXPAND_IFRAME"
-data: boolean
+data: {
+  name: string;
+  expand: boolean;
+}
 ```
 
-Returns true or false depending on whether the iframe should be considered in an expanded state or not. If true is returned this will trigger the `Container Height` event.
+Returns an object with the name of the widget and a true or false value depending on whether the iframe should be considered in an expanded state or not. If true is returned this will trigger the `Container Height` event.
 
 #### Show Alert
 
