@@ -5,7 +5,7 @@ import { UseBoundStore } from "zustand/react";
 import { Mutate, StoreApi } from "zustand/vanilla";
 
 import { Widget, WidgetState } from "../store";
-import { loadComponent } from "../utils";
+import { loadRemoteModule } from "../utils/module-federation";
 
 type WidgetProps = {
   widget: Widget;
@@ -42,16 +42,19 @@ export const RemoteComponent: FC<WidgetProps> = ({
 
   useEffect(() => {
     if (widget.type === "native") {
-      setComponent(
-        React.lazy(
-          loadComponent(
-            widget.native?.module,
-            widget.url,
-            widget.native?.module
-          )
-        )
-      );
-
+      if (widget.native && widget.native.module && widget.native.remote) {
+        const remote = widget.native.remote;
+        const module = widget.native.module;
+        const url = widget.url;
+        const { component } = props;
+        console.log({ component });
+        if (props.component) {
+          setComponent(props.component);
+        } else {
+          const lazyFactory = () => loadRemoteModule(remote, module, url);
+          setComponent(React.lazy(lazyFactory));
+        }
+      }
       setLoading(false);
     }
   }, []);
