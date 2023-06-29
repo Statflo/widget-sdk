@@ -93,20 +93,25 @@ useEffect(() => {
 
 ## Events API
 
+Below are the details for all the events that are currently supported by Statflo.
+
 ### Outgoing Events
 
 The following events can be published from the widget so that the app can trigger certain functionality.
 
-#### EXPAND_IFRAME
+#### Expand Iframe
 
 ```
 type: "EXPAND_IFRAME"
-data: boolean
+data: {
+  name: string;
+  expand: boolean;
+}
 ```
 
-Returns true or false depending on whether the iframe should be considered in an expanded state or not. If true is returned this will trigger the `Container Height` event.
+Returns an object with the name of the widget and a true or false value depending on whether the iframe should be considered in an expanded state or not. If true is returned this will trigger the `Container Height` event.
 
-#### SHOW_ALERT
+#### Show Alert
 
 ```
 type: "SHOW_ALERT"
@@ -121,6 +126,24 @@ type AlertDetails = {
   text: string;
 }
 ```
+
+#### Append Message
+
+```
+type: "APPEND_MESSAGE"
+data: string
+```
+
+Returns a string that will be appended to the contents of the chat message input. **Used in Sendables**
+
+#### Replace Message
+
+```
+type: "REPLACE_MESSAGE"
+data: string
+```
+
+Returns a string that will replace the contents of the chat message input. **Used in Sendables**
 
 ### Incoming Events
 
