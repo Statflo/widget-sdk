@@ -46,8 +46,7 @@ export const RemoteComponent: FC<WidgetProps> = ({
         const remote = widget.native.remote;
         const module = widget.native.module;
         const url = widget.url;
-        const { component } = props;
-        console.log({ component });
+
         if (props.component) {
           setComponent(props.component);
         } else {
