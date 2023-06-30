@@ -12,9 +12,9 @@ export interface Widget {
     remote: string;
     module: string;
   };
+  priority: number;
   options?: {
     defaultExpanded?: boolean;
-    priority?: number;
   };
 }
 
