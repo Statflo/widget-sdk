@@ -12,6 +12,7 @@ type WidgetProps = {
   store: UseBoundStore<Mutate<StoreApi<WidgetState>, any>>;
   fallbackError?: ComponentType<FallbackProps>;
   fallbackLoading?: string | React.ReactNode;
+  fullWidth?: boolean;
   [key: string]: any;
 };
 
@@ -34,6 +35,7 @@ export const RemoteComponent: FC<WidgetProps> = ({
   store,
   fallbackError = null,
   fallbackLoading = null,
+  fullWidth = false,
   ...props
 }) => {
   const events = store((state) => state.events);
@@ -79,14 +81,19 @@ export const RemoteComponent: FC<WidgetProps> = ({
           <IframeResizer
             id={widget.id}
             src={widget.url}
-            style={{
-              width: "calc(100% + 8px)",
-              height: "100%",
-              border: "none",
-              margin: "-0.25rem",
-            }}
+            style={
+              !fullWidth
+                ? {
+                    width: "calc(100% + 8px)",
+                    border: "none",
+                    margin: "-0.25rem",
+                  }
+                : { border: "none" }
+            }
             heightCalculationMethod="lowestElement"
+            widthCalculationMethod={fullWidth ? "rightMostElement" : undefined}
             onLoad={onLoad}
+            sizeWidth={fullWidth}
           />
         </>
       ) : loading ? (
