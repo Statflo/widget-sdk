@@ -3,23 +3,38 @@
 ![CI/CD](https://github.com/statflo/widget-sdk/actions/workflows/main.yml/badge.svg)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Statflo/widget-sdk/issues)
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Creating a widget](#creating-a-widget)
+  - [Initializing the widget store](#initializing-the-widget-store)
+  - [Publishing an event](#publishing-an-event)
+  - [Listening to an event](#listening-to-an-event)
+- [Events API](#events-api)
+  - [Outgoing Events](#outgoing-events)
+  - [Incoming Events](#incoming-events)
+- [Security](#security)
+- [Adding a widget to Statflo](#adding-a-widget-to-statflo)
+
 ## Installation
 
 ```bash
 npm install @statflo/widget-sdk # or yarn add @statflo/widget-sdk
 ```
 
+## Creating a widget
+
 Please see our [Examples](https://github.com/Statflo/widget-sdk/tree/main/examples).
 
-## Initializing the widget store
+### Initializing the widget store
 
-### Native
+#### Native
 
 ```javascript
 import useWidgetStore from "@statflo/widget-sdk";
 ```
 
-### React
+#### React
 
 ```typescript
 import useWidgetStore from "@statflo/widget-sdk";
@@ -28,9 +43,9 @@ import { create } from "zustand";
 const useBoundWidgetStore = create(useWidgetStore);
 ```
 
-## Publishing an event
+### Publishing an event
 
-### Native
+#### Native
 
 ```javascript
 import { WidgetEvent } from "@statflo/widget-sdk";
@@ -40,7 +55,7 @@ const { publishEvent } = useWidgetStore.getState();
 publishEvent(new WidgetEvent("MESSAGE_UPDATED", "<YOUR MESSAGE>"));
 ```
 
-### React
+#### React
 
 ```typescript
 import { WidgetEvent } from "@statflo/widget-sdk";
@@ -53,9 +68,9 @@ useEffect(() => {
 }, []);
 ```
 
-## Listening to an event
+### Listening to an event
 
-### Native
+#### Native
 
 ```javascript
 useWidgetStore.subscribe((state) => {
@@ -71,7 +86,7 @@ useWidgetStore.subscribe((state) => {
 });
 ```
 
-### React
+#### React
 
 ```typescript
 const { events, getLatestEvent } = useBoundWidgetStore((state) => state);
@@ -176,6 +191,15 @@ data: string
 
 Returns the authentication token for the current user. This event is triggered upon initial authentication.
 
+#### Dark Mode
+
+```
+type: "DARK_MODE"
+data: boolean
+```
+
+Returns whether the user has their preferences set to view the app in dark mode or not. This event is triggered upon initial authentication.
+
 #### Current Account ID (Ban ID)
 
 ```
@@ -203,3 +227,7 @@ The primary concern in this package is the target origin of the `window.postMess
 > Always specify an exact target origin, not \*, when you use postMessage to send data to other windows. A malicious site can change the location of the window without your knowledge, and therefore it can intercept the data sent using postMessage.
 
 By default, the target origin will be the url of the widget you register with the Statflo API.
+
+## Adding a widget to Statflo
+
+Once your widget has been deployed and is ready to be integrated into the application, please reach out to the Statflo team. 
