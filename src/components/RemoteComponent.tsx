@@ -13,6 +13,7 @@ type WidgetProps = {
   fallbackError?: ComponentType<FallbackProps>;
   fallbackLoading?: string | React.ReactNode;
   fullWidth?: boolean;
+  expdanded?: boolean;
   [key: string]: any;
 };
 
@@ -36,6 +37,7 @@ export const RemoteComponent: FC<WidgetProps> = ({
   fallbackError = null,
   fallbackLoading = null,
   fullWidth = false,
+  expanded = false,
   ...props
 }) => {
   const events = store((state) => state.events);
@@ -84,15 +86,15 @@ export const RemoteComponent: FC<WidgetProps> = ({
             style={
               !fullWidth
                 ? {
-                    width: "calc(100% + 8px)",
+                    width: expanded ? "100%" : "calc(100% + 8px)",
                     border: "none",
-                    margin: "-0.25rem",
+                    margin: expanded ? "0" : "-0.25rem",
                   }
                 : { border: "none" }
             }
-            heightCalculationMethod="lowestElement"
-            widthCalculationMethod={fullWidth ? "rightMostElement" : undefined}
+            widthCalculationMethod={fullWidth ? "rightMostElement" : "scroll"}
             onLoad={onLoad}
+            sizeHeight
             sizeWidth={fullWidth}
           />
         </>
