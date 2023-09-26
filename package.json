@@ -1,6 +1,6 @@
 {
   "name": "@statflo/widget-sdk",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "SDK for building widgets with Statflo and beyond",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
