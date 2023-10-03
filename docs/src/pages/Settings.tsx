@@ -125,7 +125,7 @@ const Settings = () => {
           <h2 className="font-semibold text-20">Authenticated User</h2>
           <p className="text-blueGrey-600 dark:text-blueGrey-300">
             Manually set a user that is used in the{" "}
-            <span className="font-semibold">USER_AUTHENITCATED</span> event.
+            <span className="font-semibold">USER_AUTHENTICATED</span> event.
           </p>
         </div>
         <div className="w-1/3">

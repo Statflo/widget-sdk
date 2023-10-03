@@ -3227,10 +3227,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@statflo/ui@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@statflo/ui/-/ui-0.0.19.tgz#0c373e7d55c43e1d359d77df642b3f9f7baecc70"
-  integrity sha512-GJycXb6vx8h/E+3kxTVx0KWd/vGZuumpCO7WDCc6nwvEKE5vHoPewsw6wz/JOk66VRMDYe1cWSp8u8+fuGE6dw==
+"@statflo/ui@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@statflo/ui/-/ui-0.0.22.tgz#0091a90b8125ad8815a66e98569f9e8f59dc56e1"
+  integrity sha512-y7N59NM5kQSbS3fvScGx9ytK1GqUKTjqS0T3A4REjEXOtxb7uPV4OVZVeKCycnJP+7e/vBq0ZDoU50572NfLdA==
   dependencies:
     "@emoji-mart/data" "^1.1.2"
     "@emoji-mart/react" "^1.1.1"

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import WidgetForm from "../containers/WidgetForm";
 import { useWidgetContext } from "../providers/WidgetProvider";
-import { Table } from "@statflo/ui";
+import { Illustration, Table } from "@statflo/ui";
 import DeleteWidget from "../containers/DeleteWidget";
 
 const columns = [
@@ -77,6 +77,21 @@ const WidgetManager = () => {
         <Table
           columns={columns}
           data={widgets ?? []}
+          emptyMessage={
+            <>
+              <p className="text-28 font-semibold text-blueGrey-600 dark:text-blueGrey-300">
+                Whoops! No Results Found
+              </p>
+              <p className="text-20 text-blueGrey-600 dark:text-blueGrey-300 mb-8">
+                Try adding a widget to get started!
+              </p>
+              <Illustration
+                height="h-40"
+                illustration="noResultsAlt"
+                width="w-120"
+              />
+            </>
+          }
           pagination={{
             pageIndex,
             pageSize,
