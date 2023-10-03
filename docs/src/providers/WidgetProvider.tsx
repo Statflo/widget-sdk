@@ -59,28 +59,6 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
   const [rightPanelWidgets, setRightPanelWidgets] = useState<Widget[]>([]);
   const [sendableWidgets, setSendableWidgets] = useState<Widget[]>([]);
 
-  // useEffect(() => {
-  //   const initialWidget: Widget = {
-  //     id: faker.string.uuid(),
-  //     name: "React Example",
-  //     url: "http://localhost:3001",
-  //     carrierIds: [1],
-  //     scopes: [
-  //       {
-  //         location: "conversations",
-  //         positions: ["right_panel"],
-  //       },
-  //     ],
-  //     dealers: {
-  //       allDealers: true,
-  //     },
-  //     type: "iframe",
-  //     priority: 99,
-  //   };
-  //   setWidgets([initialWidget]);
-  //   setRightPanelWidgets([initialWidget]);
-  // }, [setWidgets]);
-
   const addWidget = useCallback(
     (widget: Widget) => {
       setWidgets([...widgets, widget]);

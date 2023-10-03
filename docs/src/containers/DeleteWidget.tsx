@@ -33,13 +33,7 @@ const DeleteWidget = ({
         </div>
       )}
     >
-      <IconButton
-        ariaLabel="Delete Widget"
-        // iconClassName="group-hocus-not-disabled:stroke-error-700 dark:group-hocus-not-disabled:stroke-error-400"
-        color="error"
-        icon="trash"
-        plain
-      />
+      <IconButton ariaLabel="Delete Widget" color="error" icon="trash" plain />
     </Dialog>
   );
 };
