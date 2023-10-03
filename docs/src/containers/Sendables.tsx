@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { Dialog, IconButton, Menu } from "@statflo/ui";
+import { Dialog, IconButton, Menu, Popover } from "@statflo/ui";
 
 import { RemoteComponent } from "../components/RemoteComponent";
 import usePublishMainWidgetEvents from "../hooks/usePublishMainWidgetEvents";
 import { WidgetEvents, useWidgetContext } from "../providers/WidgetProvider";
+import Placeholder from "../components/Placeholder";
 
 type SendablesProps = {
   onAppend: (value: string) => void;
@@ -33,9 +34,20 @@ const Sendables = ({ onAppend, onReplace }: SendablesProps) => {
     }
   }, [events, getLatestEvent, onAppend, onReplace]);
 
-  if (!sendableWidgets || sendableWidgets.length === 0) return null;
+  if (!sendableWidgets) return null;
 
-  return (
+  return sendableWidgets.length === 0 ? (
+    <Popover
+      className="rounded-xl flex flex-col gap-4"
+      render={() => (
+        <div className="p-4 w-64">
+          <Placeholder location="Sendable" />
+        </div>
+      )}
+    >
+      <IconButton ariaLabel="Sendables Menu" icon="add" variant="secondary" />
+    </Popover>
+  ) : (
     <>
       <Menu
         items={

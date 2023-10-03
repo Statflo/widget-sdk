@@ -68,7 +68,7 @@ const WidgetManager = () => {
   });
 
   return (
-    <div className="pt-8 px-8 h-screen w-full flex flex-col gap-4">
+    <div className="pt-6 px-6 h-screen w-full flex flex-col gap-4 bg-blueGrey-50 dark:bg-darkMode-800">
       <h1 className="font-bold">Widget Manager</h1>
       <div className="flex justify-end w-full">
         <WidgetForm />
@@ -82,6 +82,7 @@ const WidgetManager = () => {
             pageSize,
           }}
           setPagination={setPagination}
+          totalItems={widgets?.length}
         />
       </div>
     </div>

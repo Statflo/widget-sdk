@@ -1,10 +1,11 @@
 {
   "name": "playground",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://statflo.github.io/widget-sdk",
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
-    "@statflo/ui": "^0.0.14",
+    "@headlessui/react": "^1.7.17",
+    "@statflo/ui": "^0.0.19",
     "@statflo/widget-sdk": "^0.4.8",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.5",
@@ -33,6 +34,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -57,6 +60,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
+    "gh-pages": "^6.0.0",
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3"
   }

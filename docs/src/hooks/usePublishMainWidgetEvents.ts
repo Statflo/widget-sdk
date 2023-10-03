@@ -4,31 +4,32 @@ import { WidgetEvent } from "@statflo/widget-sdk";
 import { WidgetEvents, useWidgetContext } from "../providers/WidgetProvider";
 import { useConversationContext } from "../providers/ConversationProvider";
 
-type User = {
-  carrier_id: number;
-  dealer_id: number;
-  email: string;
-  language: string;
-};
-
 const usePublishMainWidgetEvents = (isWidgetOpen?: boolean) => {
   const { activeConversation } = useConversationContext();
   const { publishEvent } = useWidgetContext();
 
+  const darkMode =
+    localStorage?.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
+
   useEffect(() => {
     publishEvent(
-      new WidgetEvent<string>(WidgetEvents.AUTHENTICATION_TOKEN, "1234567")
+      new WidgetEvent<string>(
+        WidgetEvents.AUTHENTICATION_TOKEN,
+        localStorage?.token ?? "1234567"
+      )
     );
     publishEvent(
       new WidgetEvent<User>(WidgetEvents.USER_AUTHENTICATED, {
-        carrier_id: 1,
-        dealer_id: 1,
-        email: "email@statflo.com",
-        language: "en",
+        carrier_id: localStorage?.user?.carrier_id ?? 1,
+        dealer_id: localStorage?.user?.dealer_id ?? 1,
+        email: localStorage?.user?.email ?? "email@statflo.com",
+        language: localStorage?.user?.language ?? "en",
       })
     );
-    publishEvent(new WidgetEvent<boolean>(WidgetEvents.DARK_MODE, true));
-  }, [publishEvent, isWidgetOpen]);
+    publishEvent(new WidgetEvent<boolean>(WidgetEvents.DARK_MODE, darkMode));
+  }, [publishEvent, isWidgetOpen, darkMode]);
 
   useEffect(() => {
     if (activeConversation?.recipient.ban_id) {

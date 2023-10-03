@@ -17,7 +17,7 @@ const EventLog = () => {
     <div className="flex-1 flex flex-col overflow-hidden">
       <h3 className="text-18 font-bold mb-2">Event Log</h3>
       <div
-        className="break-words rounded-md bg-darkMode-600 border border-darkMode-500 p-3 overflow-y-auto font-mono"
+        className="break-words rounded-md bg-blueGrey-50 border border-blueGrey-200 dark:bg-darkMode-600 dark:border-darkMode-500 p-3 overflow-y-auto font-mono"
         ref={ref}
       >
         {events.map((event) => (
