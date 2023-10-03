@@ -32,7 +32,7 @@ const MessageInput = () => {
           },
         ]}
       />
-      <div className="flex p-4 flex-1 items-center gap-4">
+      <div className="flex p-4 flex-1 items-center gap-4 bg-background-light dark:bg-blueGrey-900">
         <Sendables onAppend={handleAppend} onReplace={handleReplace} />
         <div className="flex-1">
           <div className="group relative w-full flex items-center justify-center bg-blueGrey-100 rounded-2xl min-h-[44px] border-2 dark:bg-darkMode-600 focus-within:border-blue-400 border-transparent">

@@ -52,7 +52,7 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
       render={({ onClose, labelId, descriptionId }) =>
         isOpen && (
           <div className="flex flex-col gap-6 w-120">
-            <h2 className="text-28 font-bold">
+            <h2 className="text-28 font-bold" id={labelId}>
               {isEdit ? "Edit Widget" : "Add Widget"}
             </h2>
             <Formik
@@ -126,30 +126,54 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                 return (
                   <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                     <TextField
+                      infoText="Used to identify the widget and as a fallback in the event of an error."
                       label="Name"
                       name="name"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Example Widget"
                       value={values.name}
+                      validation={
+                        errors.name && touched.name
+                          ? { status: "error", text: errors.name }
+                          : undefined
+                      }
                     />
                     <TextField
+                      infoText="Displayed in the sendables menu to describe the purpose of the widget as well as open the widget."
                       label="Label"
                       name="label"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Add a date"
+                      required={false}
                       value={values.label}
+                      validation={
+                        errors.label && touched.label
+                          ? { status: "error", text: errors.label }
+                          : undefined
+                      }
                     />
                     <TextField
+                      infoText="Where the widget is hosted, this can be from a locally running version of the widget or a deployed version of the widget."
                       label="URL"
                       name="url"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="http://localhost:3001"
                       value={values.url}
+                      validation={
+                        errors.url && touched.url
+                          ? { status: "error", text: errors.url }
+                          : undefined
+                      }
                     />
                     <RadioGroup name="position" label="Position">
+                      <span className="text-14 leading-[1.125rem] text-blueGrey-600 dark:text-blueGrey-300">
+                        Location of the widget on the conversations screen -
+                        right panel is the area beneath the contact information
+                        and sendable is the + button in the message input.
+                      </span>
                       <RadioButton
                         checked={values.position === "right_panel"}
                         label="Right Panel"
@@ -164,6 +188,7 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                       />
                     </RadioGroup>
                     <TextField
+                      infoText="The order that the widgets will be displayed to the user, higher priority will display at the top."
                       label="Priority"
                       name="priority"
                       onChange={handleChange}
@@ -171,13 +196,18 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                       placeholder="99"
                       value={values.priority.toString()}
                       type="number"
+                      validation={
+                        errors.priority && touched.priority
+                          ? { status: "error", text: errors.priority }
+                          : undefined
+                      }
                     />
                     <div className="flex justify-between">
                       <Button onClick={onClose} size="small" variant="tertiary">
                         Cancel
                       </Button>
                       <Button
-                        // disabled={isSubmitting || !dirty || !isValid}
+                        disabled={isSubmitting || !dirty || !isValid}
                         size="small"
                         type="submit"
                       >
@@ -197,6 +227,7 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
           ariaLabel="Edit Widget"
           icon="edit-underline"
           onClick={() => setOpen(true)}
+          plain
         />
       ) : (
         <Button leadingIcon="application-add" onClick={() => setOpen(true)}>

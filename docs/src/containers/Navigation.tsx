@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import EventManager from "./EventManager";
+import GettingStarted from "./GettingStarted";
 
 type NavItemProps = {
   icon: React.ComponentProps<typeof Icon>["icon"];
@@ -43,21 +44,25 @@ const NavItem = ({ icon, label, path }: NavItemProps) => {
 const Navigation = () => {
   return (
     <>
-      <div className="h-screen w-15 flex flex-col gap-12 bg-background-light shadow-navbar dark:bg-background-dark dark:border-r dark:border-blueGrey-800">
+      <div className="h-screen w-15 flex flex-col gap-12 bg-background-light shadow-navigation dark:bg-background-dark dark:border-r dark:border-blueGrey-800">
         <div className="px-[0.625rem] py-5 h-[6.125rem]">
           <Logo className="h-full" />
         </div>
-        <NavItem
-          icon="chat-reply"
-          label="Conversations"
-          path="/conversations"
-        />
-        <NavItem
-          icon="application-setting"
-          label="Widget Manager"
-          path="/widget-manager"
-        />
-        <EventManager />
+        <div>
+          <NavItem
+            icon="chat-reply"
+            label="Conversations"
+            path="/conversations"
+          />
+          <NavItem
+            icon="application-setting"
+            label="Widget Manager"
+            path="/widget-manager"
+          />
+          <EventManager />
+          <NavItem icon="settings" label="Settings" path="/settings" />
+          <GettingStarted />
+        </div>
       </div>
     </>
   );

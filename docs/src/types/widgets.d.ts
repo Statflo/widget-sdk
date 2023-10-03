@@ -22,3 +22,10 @@ type Widget = {
     defaultExpanded?: boolean;
   };
 };
+
+type User = {
+  carrier_id: number;
+  dealer_id: number;
+  email: string;
+  language: string;
+};

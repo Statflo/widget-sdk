@@ -10,7 +10,7 @@ const ContactPanel = () => {
   return (
     <div className="bg-background-light h-screen flex flex-col w-full relative shadow-navigation dark:border-l dark:border-blueGrey-800 dark:bg-blueGrey-900">
       <div className="flex flex-col items-center">
-        <div className="min-h-[8rem] h-full flex flex-col justify-center items-center py-4 px-8">
+        <div className="min-h-[8rem] h-full flex flex-col gap-1 justify-center items-center py-4 px-8">
           <h2 className="text-24 font-bold text-center">
             {activeConversation.recipient.name}
           </h2>

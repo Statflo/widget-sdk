@@ -2,14 +2,12 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
 import { StoreApi, UseBoundStore, create } from "zustand";
 
 import useWidgetStore, { WidgetEvent, WidgetState } from "@statflo/widget-sdk";
-import { faker } from "@faker-js/faker";
 
 const useBoundWidgetStore = create(useWidgetStore);
 
@@ -37,8 +35,8 @@ type WidgetContextProps = {
   editWidget: (widget: Widget) => void;
   deleteWidget: (widgetId: string) => void;
   widgets?: Widget[];
-  rightPanelWidgets?: Widget[];
-  sendableWidgets?: Widget[];
+  rightPanelWidgets: Widget[];
+  sendableWidgets: Widget[];
 };
 
 // eslint-disable-next-line
@@ -58,30 +56,8 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
     getEvents,
   } = useBoundWidgetStore();
 
-  const [rightPanelWidgets, setRightPanelWidgets] = useState<Widget[]>();
-  const [sendableWidgets, setSendableWidgets] = useState<Widget[]>();
-
-  useEffect(() => {
-    const initialWidget: Widget = {
-      id: faker.string.uuid(),
-      name: "React Example",
-      url: "http://localhost:3001",
-      carrierIds: [1],
-      scopes: [
-        {
-          location: "conversations",
-          positions: ["right_panel"],
-        },
-      ],
-      dealers: {
-        allDealers: true,
-      },
-      type: "iframe",
-      priority: 99,
-    };
-    setWidgets([initialWidget]);
-    setRightPanelWidgets([initialWidget]);
-  }, [setWidgets]);
+  const [rightPanelWidgets, setRightPanelWidgets] = useState<Widget[]>([]);
+  const [sendableWidgets, setSendableWidgets] = useState<Widget[]>([]);
 
   const addWidget = useCallback(
     (widget: Widget) => {
@@ -89,12 +65,16 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
 
       if (widget.scopes[0].positions[0] === "right_panel") {
         setRightPanelWidgets((prevState) =>
-          prevState ? [...prevState, widget] : [widget]
+          prevState
+            ? [...prevState, widget].sort((a, b) => a.priority - b.priority)
+            : [widget]
         );
       }
       if (widget.scopes[0].positions[0] === "sendable") {
         setSendableWidgets((prevState) =>
-          prevState ? [...prevState, widget] : [widget]
+          prevState
+            ? [...prevState, widget].sort((a, b) => a.priority - b.priority)
+            : [widget]
         );
       }
     },
@@ -112,7 +92,9 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
         );
         setRightPanelWidgets((prevState) =>
           prevState
-            ? prevState.map((w) => (w.id === widget.id ? widget : w))
+            ? prevState
+                .map((w) => (w.id === widget.id ? widget : w))
+                .sort((a, b) => a.priority - b.priority)
             : [widget]
         );
       }
@@ -122,7 +104,9 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
         );
         setSendableWidgets((prevState) =>
           prevState
-            ? prevState.map((w) => (w.id === widget.id ? widget : w))
+            ? prevState
+                .map((w) => (w.id === widget.id ? widget : w))
+                .sort((a, b) => a.priority - b.priority)
             : [widget]
         );
       }

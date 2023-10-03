@@ -4,6 +4,7 @@ import usePublishMainWidgetEvents from "../hooks/usePublishMainWidgetEvents";
 import { WidgetEvents, useWidgetContext } from "../providers/WidgetProvider";
 import WidgetWrapper from "./WidgetWrapper";
 import { Alert } from "@statflo/ui";
+import Placeholder from "../components/Placeholder";
 
 type AlertDetails = {
   status: React.ComponentProps<typeof Alert>["status"];
@@ -28,9 +29,11 @@ const WidgetsPanel = () => {
   return (
     <>
       <div className="flex flex-col gap-3 bg-blueGrey-50 h-full p-3 overflow-y-auto dark:bg-darkMode-900">
-        {rightPanelWidgets?.map((w) => (
-          <WidgetWrapper key={w.id} widget={w} />
-        ))}
+        {rightPanelWidgets.length === 0 ? (
+          <Placeholder location="Right Panel" />
+        ) : (
+          rightPanelWidgets.map((w) => <WidgetWrapper key={w.id} widget={w} />)
+        )}
       </div>
       <Alert
         animation="popup"

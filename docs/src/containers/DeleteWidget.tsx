@@ -33,7 +33,7 @@ const DeleteWidget = ({
         </div>
       )}
     >
-      <IconButton ariaLabel="Delete Widget" color="error" icon="trash" />
+      <IconButton ariaLabel="Delete Widget" color="error" icon="trash" plain />
     </Dialog>
   );
 };

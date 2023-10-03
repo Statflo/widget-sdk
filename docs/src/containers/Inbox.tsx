@@ -7,7 +7,7 @@ const Inbox = () => {
     useConversationContext();
 
   return (
-    <div className="flex flex-col h-screen border-r border-blueGrey-800">
+    <div className="flex flex-col h-screen shadow-navigation dark:shadow-transparent dark:border-r dark:border-blueGrey-800">
       <div className="relative">
         <div className="bg-background-light dark:bg-blueGrey-900">
           <div className="flex items-center justify-between h-[5.5rem] py-4 pl-6 pr-4">
