@@ -8,7 +8,11 @@ const EventsTrigger = () => {
   const { publishEvent } = useWidgetContext();
   const { activeConversation } = useConversationContext();
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
 
   const events = useMemo(
     () => [
@@ -29,7 +33,7 @@ const EventsTrigger = () => {
       },
       {
         name: "DARK_MODE",
-        info: "Returns whether the user has their preferences set to view the app in dark mode or not. This event is triggered upon initial authentication.",
+        info: "Returns whether the user has their preferences set to view the app in dark mode or not. This event is triggered upon initial authentication. The default value that is used for this event can be updated on the Settings page or it can manually be set for just the event by using the toggle.",
         payload: darkMode,
         input: (
           <div className="flex gap-2 items-center">
@@ -64,7 +68,7 @@ const EventsTrigger = () => {
         {events.map((event) => (
           <div className="flex justify-between items-center" key={event.name}>
             <div className="flex gap-2 items-center">
-              <p className="font-semi">{event.name}</p>
+              <p>{event.name}</p>
               <Tooltip text={event.info} position="right">
                 <div>
                   <Icon

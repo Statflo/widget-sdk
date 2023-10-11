@@ -1,7 +1,9 @@
 import { Button, Icon, TextField, classNames } from "@statflo/ui";
 import { RadioGroup } from "@headlessui/react";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import * as Yup from "yup";
+
 import { LightMode } from "../components/Theme/LightMode";
 import { DarkMode } from "../components/Theme/DarkMode";
 import { OS } from "../components/Theme/OS";
@@ -78,20 +80,22 @@ const Settings = () => {
             {themes.map((theme) => (
               <RadioGroup.Option key={theme.id} value={theme}>
                 {({ checked }) => (
-                  <div
+                  <motion.div
                     className={classNames(
-                      "flex flex-col gap-4 pt-2 px-4 pb-4 rounded-xl shadow-card dark:shadow-transparent dark:border dark:border-blueGrey-800",
+                      "flex flex-col gap-4 pt-2 px-4 pb-4 rounded-xl shadow-card transition-colors hocus-not-disabled:cursor-pointer dark:shadow-transparent dark:border ",
                       checked
-                        ? "bg-blue-200 dark:bg-blue-400"
-                        : "bg-background-light dark:bg-darkMode-600"
+                        ? "bg-blue-200 hocus-not-disabled:bg-blue-300 dark:bg-blue-400 dark:border-blue-300 dark:hocus-not-disabled:bg-blue-300"
+                        : "bg-background-light hocus-not-disabled:bg-blue-100 dark:bg-darkMode-600 dark:border-blueGrey-800 dark:hocus-not-disabled:bg-darkMode-500"
                     )}
+                    whileTap={{ scale: 0.96 }}
+                    whileHover={{ scale: 1.04 }}
                   >
                     <span className={classNames(checked && "font-bold")}>
                       {theme.name}
                       {theme?.icon}
                     </span>
-                    <div className="w-48">{theme.preview}</div>
-                  </div>
+                    <div className="w-52">{theme.preview}</div>
+                  </motion.div>
                 )}
               </RadioGroup.Option>
             ))}
