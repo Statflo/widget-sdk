@@ -88,10 +88,10 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
 
       if (widget.scopes[0].positions[0] === "right_panel") {
         setSendableWidgets((prevState) =>
-          prevState?.filter((w) => w.id !== widget.id)
+          prevState.filter((w) => w.id !== widget.id)
         );
         setRightPanelWidgets((prevState) =>
-          prevState
+          prevState.some((w) => w.id === widget.id)
             ? prevState
                 .map((w) => (w.id === widget.id ? widget : w))
                 .sort((a, b) => a.priority - b.priority)
@@ -103,7 +103,7 @@ export function WidgetProvider({ children }: { children: React.ReactNode }) {
           prevState?.filter((w) => w.id !== widget.id)
         );
         setSendableWidgets((prevState) =>
-          prevState
+          prevState.some((w) => w.id === widget.id)
             ? prevState
                 .map((w) => (w.id === widget.id ? widget : w))
                 .sort((a, b) => a.priority - b.priority)

@@ -14,9 +14,9 @@ import { faker } from "@faker-js/faker";
 import { useWidgetContext } from "../providers/WidgetProvider";
 
 const WidgetSchema = Yup.object().shape({
-  name: Yup.string().required(),
+  name: Yup.string().required("This field is required"),
   label: Yup.string(),
-  url: Yup.string().required(),
+  url: Yup.string().required("This field is required"),
   position: Yup.string().oneOf(["sendable", "right_panel"]),
   priorty: Yup.number(),
 });
@@ -131,7 +131,7 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                       name="name"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      placeholder="Example Widget"
+                      placeholder="eg. Example Widget"
                       value={values.name}
                       validation={
                         errors.name && touched.name
@@ -140,12 +140,12 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                       }
                     />
                     <TextField
-                      infoText="Displayed in the sendables menu to describe the purpose of the widget as well as open the widget."
+                      infoText="Displayed in the sendables menu, to describe the purpose of the widget."
                       label="Label"
                       name="label"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      placeholder="Add a date"
+                      placeholder="eg. Add an appointment link"
                       required={false}
                       value={values.label}
                       validation={
@@ -160,7 +160,7 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                       name="url"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      placeholder="http://localhost:3001"
+                      placeholder="eg. http://localhost:3001"
                       value={values.url}
                       validation={
                         errors.url && touched.url
@@ -170,30 +170,43 @@ const WidgetForm = ({ isEdit, widget }: WidgetFormProps) => {
                     />
                     <RadioGroup name="position" label="Position">
                       <span className="text-14 leading-[1.125rem] text-blueGrey-600 dark:text-blueGrey-300">
-                        Location of the widget on the conversations screen -
-                        right panel is the area beneath the contact information
-                        and sendable is the + button in the message input.
+                        Location of the widget on the conversations screen.
                       </span>
-                      <RadioButton
-                        checked={values.position === "right_panel"}
-                        label="Right Panel"
-                        onChange={handleChange}
-                        value="right_panel"
-                      />
-                      <RadioButton
-                        checked={values.position === "sendable"}
-                        label="Sendables"
-                        onChange={handleChange}
-                        value="sendable"
-                      />
+                      <div className="flex flex-col">
+                        <RadioButton
+                          className="text-14"
+                          checked={values.position === "right_panel"}
+                          label="Right Panel"
+                          name="position"
+                          onChange={handleChange}
+                          value="right_panel"
+                        />
+                        <span className="text-14 leading-[1.125rem] text-blueGrey-600 dark:text-blueGrey-300 pl-7">
+                          This is the area beneath the contact information.
+                        </span>
+                      </div>
+                      <div className="flex flex-col">
+                        <RadioButton
+                          className="text-14"
+                          checked={values.position === "sendable"}
+                          label="Sendables"
+                          name="position"
+                          onChange={handleChange}
+                          value="sendable"
+                        />
+                        <span className="text-14 leading-[1.125rem] text-blueGrey-600 dark:text-blueGrey-300 pl-7">
+                          This is the + button in the message input.
+                        </span>
+                      </div>
                     </RadioGroup>
                     <TextField
-                      infoText="The order that the widgets will be displayed to the user, higher priority will display at the top."
+                      infoText="The order the widgets will be displayed to the user, higher priority will display at the top. ex. A widget with priority 1 will display before a widget with priority 2."
                       label="Priority"
                       name="priority"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="99"
+                      required={false}
                       value={values.priority.toString()}
                       type="number"
                       validation={

@@ -3,361 +3,290 @@ export const DarkMode = () => {
     <svg
       width="100%"
       height="100%"
-      viewBox="0 0 437 280"
+      viewBox="0 0 240 135"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#clip0_1462_13743)">
-        <g filter="url(#filter0_d_1462_13743)">
-          <mask
-            id="path-2-outside-1_1462_13743"
-            maskUnits="userSpaceOnUse"
-            x="329.5"
-            y="0"
-            width="107"
-            height="280"
-            fill="black"
-          >
-            <rect fill="white" x="329.5" width="107" height="280" />
-            <path d="M330.5 0H436.5V279.5H330.5V0Z" />
-          </mask>
-          <path
-            d="M330.5 0H436.5V279.5H330.5V0Z"
+      <g clip-path="url(#clip0_1469_4888)">
+        <rect width="8" height="135" fill="#0D101C" />
+        <rect x="3.125" y="6" width="2" height="6" rx="1" fill="#30374F" />
+        <rect x="2.625" y="26" width="3" height="3" rx="1" fill="#30374F" />
+        <rect x="2.625" y="33" width="3" height="3" rx="1" fill="#30374F" />
+        <rect x="2.625" y="40" width="3" height="3" rx="1" fill="#30374F" />
+        <rect x="2.625" y="47" width="3" height="3" rx="1" fill="#30374F" />
+        <rect x="2.625" y="54" width="3" height="3" rx="1" fill="#30374F" />
+        <rect
+          width="53"
+          height="135"
+          transform="translate(187)"
+          fill="#171A26"
+        />
+        <rect
+          width="53"
+          height="38"
+          transform="translate(187)"
+          fill="#1F2332"
+        />
+        <rect
+          x="202.688"
+          y="5.625"
+          width="21.625"
+          height="3.75"
+          rx="1"
+          fill="#30374F"
+        />
+        <rect x="190" y="17" width="26" height="4" rx="1" fill="#30374F" />
+        <rect x="190" y="23" width="26" height="4" rx="1" fill="#30374F" />
+        <g filter="url(#filter0_d_1469_4888)">
+          <rect
+            width="52"
+            height="135"
+            transform="translate(8)"
             fill="#171A26"
-            shapeRendering="crispEdges"
-          />
-          <rect
-            width="106"
-            height="53"
-            transform="translate(330.5)"
-            fill="#1F2332"
-          />
-          <rect
-            x="361.875"
-            y="11.25"
-            width="43.25"
-            height="7.5"
-            rx="2"
-            fill="#30374F"
-          />
-          <rect x="336.5" y="34" width="52" height="8" rx="2" fill="#30374F" />
-          <rect x="336.5" y="45" width="52" height="8" rx="2" fill="#30374F" />
-          <rect
-            width="106"
-            height="22.25"
-            transform="translate(330.5 53)"
-            fill="#1F2332"
-          />
-          <path
-            d="M331.5 279.5V0H329.5V279.5H331.5Z"
-            fill="#3A415F"
-            mask="url(#path-2-outside-1_1462_13743)"
-          />
-        </g>
-        <mask
-          id="path-7-outside-2_1462_13743"
-          maskUnits="userSpaceOnUse"
-          x="119.5"
-          y="0"
-          width="212"
-          height="280"
-          fill="black"
-        >
-          <rect fill="white" x="119.5" width="212" height="280" />
-          <path d="M120.5 0H330.5V279.5H120.5V0Z" />
-        </mask>
-        <path d="M120.5 0H330.5V279.5H120.5V0Z" fill="#171A26" />
-        <mask id="path-9-inside-3_1462_13743" fill="white">
-          <path d="M120.5 0H330.5V22H120.5V0Z" />
-        </mask>
-        <path d="M120.5 0H330.5V22H120.5V0Z" fill="#1F2332" />
-        <rect
-          x="132.5"
-          y="7.875"
-          width="37"
-          height="6.25"
-          rx="2"
-          fill="#30374F"
-        />
-        <path
-          d="M330.5 21H120.5V23H330.5V21Z"
-          fill="#3A415F"
-          mask="url(#path-9-inside-3_1462_13743)"
-        />
-        <rect
-          x="216.75"
-          y="166"
-          width="101.75"
-          height="30"
-          rx="8"
-          fill="#424DE5"
-        />
-        <rect
-          x="132.5"
-          y="206"
-          width="101.75"
-          height="30"
-          rx="8"
-          fill="#D2D5E3"
-        />
-        <g filter="url(#filter1_d_1462_13743)">
-          <rect
-            width="210"
-            height="31.5"
-            transform="translate(120.5 248)"
-            fill="white"
-          />
-          <rect
-            width="105"
-            height="12"
-            transform="translate(120.5 248)"
-            fill="#1F2332"
-          />
-          <rect x="120.5" y="258" width="105" height="2" fill="#5A68ED" />
-          <mask id="path-15-inside-4_1462_13743" fill="white">
-            <path d="M225.5 248H330.5V260H225.5V248Z" />
-          </mask>
-          <path d="M225.5 248H330.5V260H225.5V248Z" fill="#1F2332" />
-          <path
-            d="M330.5 259H225.5V261H330.5V259Z"
-            fill="#3A415F"
-            mask="url(#path-15-inside-4_1462_13743)"
-          />
-          <rect
-            width="210"
-            height="19.5"
-            transform="translate(120.5 260)"
-            fill="#1F2332"
-          />
-          <rect
-            x="124.5"
-            y="264"
-            width="171.25"
-            height="11.5"
-            rx="5.75"
-            fill="#2F344C"
-          />
-          <rect
-            x="303.75"
-            y="264.5"
-            width="22.75"
-            height="10.5"
-            rx="5.25"
-            fill="#424DE5"
-          />
-        </g>
-        <path
-          d="M329.5 0V279.5H331.5V0H329.5ZM121.5 279.5V0H119.5V279.5H121.5Z"
-          fill="#30374F"
-          mask="url(#path-7-outside-2_1462_13743)"
-        />
-        <g filter="url(#filter2_d_1462_13743)">
-          <rect
-            width="104"
-            height="22"
-            transform="translate(16.5)"
-            fill="#1F2332"
-          />
-          <rect
-            x="28.5"
-            y="7.875"
-            width="43.25"
-            height="6.25"
-            rx="2"
-            fill="#30374F"
           />
           <rect
             width="52"
-            height="12"
-            transform="translate(16.5 22)"
+            height="26.25"
+            transform="translate(8)"
             fill="#1F2332"
           />
-          <rect x="16.5" y="32" width="52" height="2" fill="#475AFF" />
-          <mask id="path-23-inside-6_1462_13743" fill="white">
-            <path d="M68.5 22H120.5V34H68.5V22Z" />
-          </mask>
-          <path d="M68.5 22H120.5V34H68.5V22Z" fill="#1F2332" />
-          <path
-            d="M120.5 33H68.5V35H120.5V33Z"
-            fill="#3A415F"
-            mask="url(#path-23-inside-6_1462_13743)"
+          <rect
+            x="11"
+            y="3.9375"
+            width="21.625"
+            height="3.125"
+            rx="1"
+            fill="#30374F"
           />
-          <mask id="path-25-inside-7_1462_13743" fill="white">
-            <path d="M16.5 34H120.5V52.5H16.5V34Z" />
+          <mask id="path-12-inside-1_1469_4888" fill="white">
+            <path d="M8 11H34V17H8V11Z" />
           </mask>
-          <path d="M16.5 34H120.5V52.5H16.5V34Z" fill="#1F2332" />
+          <path d="M8 11H34V17H8V11Z" fill="#1F2333" />
           <path
-            d="M120.5 51.5H16.5V53.5H120.5V51.5Z"
+            d="M34 16H8V18H34V16Z"
+            fill="#5A68ED"
+            mask="url(#path-12-inside-1_1469_4888)"
+          />
+          <mask id="path-14-inside-2_1469_4888" fill="white">
+            <path d="M34 11H60V17H34V11Z" />
+          </mask>
+          <path d="M34 11H60V17H34V11Z" fill="#1F2333" />
+          <path
+            d="M60 16H34V18H60V16Z"
+            fill="#30374F"
+            mask="url(#path-14-inside-2_1469_4888)"
+          />
+          <mask id="path-16-inside-3_1469_4888" fill="white">
+            <path d="M8 17H60V26.25H8V17Z" />
+          </mask>
+          <path d="M8 17H60V26.25H8V17Z" fill="#1F2332" />
+          <path
+            d="M60 25.25H8V27.25H60V25.25Z"
             fill="#1F2333"
-            mask="url(#path-25-inside-7_1462_13743)"
+            mask="url(#path-16-inside-3_1469_4888)"
           />
-          <g
-            clipPath="url(#clip1_1462_13743)"
-            filter="url(#filter3_i_1462_13743)"
-          >
-            <rect
-              width="104"
-              height="208"
-              transform="translate(16.5 52.5)"
-              fill="#171A26"
-            />
-            <rect
-              x="25"
-              y="61"
-              width="87"
-              height="30"
-              rx="5.5"
-              fill="#1F2332"
-            />
-            <rect
-              x="25"
-              y="61"
-              width="87"
-              height="30"
-              rx="5.5"
-              stroke="#1F2333"
-            />
-            <rect
-              x="25"
-              y="100"
-              width="87"
-              height="30"
-              rx="5.5"
-              fill="#1F2332"
-            />
-            <rect
-              x="25"
-              y="100"
-              width="87"
-              height="30"
-              rx="5.5"
-              stroke="#1F2333"
-            />
-            <rect
-              x="25"
-              y="139"
-              width="87"
-              height="30"
-              rx="5.5"
-              fill="#1F2332"
-            />
-            <rect
-              x="25"
-              y="139"
-              width="87"
-              height="30"
-              rx="5.5"
-              stroke="#1F2333"
-            />
-            <rect
-              x="25"
-              y="178"
-              width="87"
-              height="30"
-              rx="5.5"
-              fill="#1F2332"
-            />
-            <rect
-              x="25"
-              y="178"
-              width="87"
-              height="30"
-              rx="5.5"
-              stroke="#1F2333"
-            />
-            <rect
-              x="25"
-              y="217"
-              width="87"
-              height="30"
-              rx="5.5"
-              fill="#1F2332"
-            />
-            <rect
-              x="25"
-              y="217"
-              width="87"
-              height="30"
-              rx="5.5"
-              stroke="#1F2333"
-            />
-            <rect
-              x="25"
-              y="256"
-              width="87"
-              height="30"
-              rx="5.5"
-              fill="#1F2332"
-            />
-            <rect
-              x="25"
-              y="256"
-              width="87"
-              height="30"
-              rx="5.5"
-              stroke="#1F2333"
-            />
-          </g>
+          <rect
+            x="12.5"
+            y="30.75"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            fill="#1F2332"
+          />
+          <rect
+            x="12.5"
+            y="30.75"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            stroke="#1F2333"
+          />
+          <rect
+            x="12.5"
+            y="50.25"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            fill="#1F2332"
+          />
+          <rect
+            x="12.5"
+            y="50.25"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            stroke="#1F2333"
+          />
+          <rect
+            x="12.5"
+            y="69.75"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            fill="#1F2332"
+          />
+          <rect
+            x="12.5"
+            y="69.75"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            stroke="#1F2333"
+          />
+          <rect
+            x="12.5"
+            y="89.25"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            fill="#1F2332"
+          />
+          <rect
+            x="12.5"
+            y="89.25"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            stroke="#1F2333"
+          />
+          <rect
+            x="12.5"
+            y="108.75"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            fill="#1F2332"
+          />
+          <rect
+            x="12.5"
+            y="108.75"
+            width="43"
+            height="14.5"
+            rx="3.5"
+            stroke="#1F2333"
+          />
           <mask
-            id="path-33-outside-8_1462_13743"
+            id="path-23-outside-4_1469_4888"
             maskUnits="userSpaceOnUse"
-            x="16.5"
-            y="259.5"
-            width="104"
-            height="20"
+            x="8"
+            y="125"
+            width="52"
+            height="10"
             fill="black"
           >
-            <rect fill="white" x="16.5" y="259.5" width="104" height="20" />
-            <path d="M16.5 260.5H120.5V279.5H16.5V260.5Z" />
+            <rect fill="white" x="8" y="125" width="52" height="10" />
+            <path d="M8 126H60V135H8V126Z" />
           </mask>
-          <path d="M16.5 260.5H120.5V279.5H16.5V260.5Z" fill="#1F2332" />
+          <path d="M8 126H60V135H8V126Z" fill="#1F2333" />
           <path
-            d="M16.5 261.5H120.5V259.5H16.5V261.5Z"
+            d="M8 127H60V125H8V127Z"
             fill="#1F2333"
-            mask="url(#path-33-outside-8_1462_13743)"
-          />
-          <path
-            d="M119.5 0V279.5H121.5V0H119.5Z"
-            fill="#3A415F"
-            mask="url(#path-19-outside-5_1462_13743)"
+            mask="url(#path-23-outside-4_1469_4888)"
           />
         </g>
         <mask
-          id="path-35-outside-9_1462_13743"
+          id="path-25-outside-5_1469_4888"
           maskUnits="userSpaceOnUse"
-          x="0"
+          x="59"
           y="0"
-          width="18"
-          height="280"
+          width="129"
+          height="135"
           fill="black"
         >
-          <rect fill="white" width="18" height="280" />
-          <path d="M0 0H16.5V279.5H0V0Z" />
+          <rect fill="white" x="59" width="129" height="135" />
+          <path d="M60 0H187V135H60V0Z" />
         </mask>
-        <path d="M0 0H16.5V279.5H0V0Z" fill="#0D101C" />
-        <rect x="6.25" y="12" width="4" height="12" rx="2" fill="#30374F" />
-        <rect x="5.25" y="52" width="6" height="6" rx="2" fill="#30374F" />
-        <rect x="5.25" y="66" width="6" height="6" rx="2" fill="#30374F" />
-        <rect x="5.25" y="80" width="6" height="6" rx="2" fill="#30374F" />
-        <rect x="5.25" y="94" width="6" height="6" rx="2" fill="#30374F" />
-        <rect x="5.25" y="108" width="6" height="6" rx="2" fill="#30374F" />
+        <path d="M60 0H187V135H60V0Z" fill="#171A26" />
+        <mask id="path-27-inside-6_1469_4888" fill="white">
+          <path d="M60 0H187V11H60V0Z" />
+        </mask>
+        <path d="M60 0H187V11H60V0Z" fill="#1F2332" />
+        <rect
+          x="66"
+          y="3.9375"
+          width="18.5"
+          height="3.125"
+          rx="1"
+          fill="#30374F"
+        />
         <path
-          d="M15.5 0V279.5H17.5V0H15.5Z"
-          fill="#3A415F"
-          mask="url(#path-35-outside-9_1462_13743)"
+          d="M187 10H60V12H187V10Z"
+          fill="#30374F"
+          mask="url(#path-27-inside-6_1469_4888)"
+        />
+        <rect
+          x="129.875"
+          y="78.25"
+          width="50.875"
+          height="15"
+          rx="4"
+          fill="#424DE5"
+        />
+        <rect
+          x="66"
+          y="98.25"
+          width="50.875"
+          height="15"
+          rx="4"
+          fill="#D2D5E3"
+        />
+        <mask id="path-32-inside-7_1469_4888" fill="white">
+          <path d="M60 119.25H123.5V125.25H60V119.25Z" />
+        </mask>
+        <path d="M60 119.25H123.5V125.25H60V119.25Z" fill="#1F2332" />
+        <path
+          d="M123.5 124.25H60V126.25H123.5V124.25Z"
+          fill="#5A68ED"
+          mask="url(#path-32-inside-7_1469_4888)"
+        />
+        <mask id="path-34-inside-8_1469_4888" fill="white">
+          <path d="M123.5 119.25H187V125.25H123.5V119.25Z" />
+        </mask>
+        <path d="M123.5 119.25H187V125.25H123.5V119.25Z" fill="#1F2332" />
+        <path
+          d="M187 124.25H123.5V126.25H187V124.25Z"
+          fill="#30374F"
+          mask="url(#path-34-inside-8_1469_4888)"
+        />
+        <rect
+          width="127"
+          height="9.75"
+          transform="translate(60 125.25)"
+          fill="#1F2332"
+        />
+        <rect
+          x="62"
+          y="127.25"
+          width="107.375"
+          height="5.75"
+          rx="2"
+          fill="#272C3F"
+        />
+        <rect
+          x="173.375"
+          y="127.5"
+          width="11.375"
+          height="5.25"
+          rx="2.625"
+          fill="#424DE5"
+        />
+        <path
+          d="M186 0V135H188V0H186ZM61 135V0H59V135H61Z"
+          fill="#30374F"
+          mask="url(#path-25-outside-5_1469_4888)"
         />
       </g>
       <defs>
         <filter
-          id="filter0_d_1462_13743"
-          x="325.5"
+          id="filter0_d_1469_4888"
+          x="4"
           y="-3"
-          width="115"
-          height="287.5"
+          width="60"
+          height="143"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
+          color-interpolation-filters="sRGB"
         >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -374,130 +303,17 @@ export const DarkMode = () => {
           <feBlend
             mode="normal"
             in2="BackgroundImageFix"
-            result="effect1_dropShadow_1462_13743"
+            result="effect1_dropShadow_1469_4888"
           />
           <feBlend
             mode="normal"
             in="SourceGraphic"
-            in2="effect1_dropShadow_1462_13743"
+            in2="effect1_dropShadow_1469_4888"
             result="shape"
           />
         </filter>
-        <filter
-          id="filter1_d_1462_13743"
-          x="116.5"
-          y="243"
-          width="218"
-          height="39.5"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dy="-1" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.121569 0 0 0 0 0.137255 0 0 0 0 0.196078 0 0 0 0.08 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_1462_13743"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_1462_13743"
-            result="shape"
-          />
-        </filter>
-        <filter
-          id="filter2_d_1462_13743"
-          x="12.5"
-          y="-3"
-          width="113"
-          height="287.5"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset dy="1" />
-          <feGaussianBlur stdDeviation="2" />
-          <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.121097 0 0 0 0 0.136234 0 0 0 0 0.197579 0 0 0 0.16 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_1462_13743"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect1_dropShadow_1462_13743"
-            result="shape"
-          />
-        </filter>
-        <filter
-          id="filter3_i_1462_13743"
-          x="16.5"
-          y="52.5"
-          width="104"
-          height="208"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            result="hardAlpha"
-          />
-          <feOffset />
-          <feGaussianBlur stdDeviation="1" />
-          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0.384314 0 0 0 0 0.427451 0 0 0 0 0.6 0 0 0 0.25 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="shape"
-            result="effect1_innerShadow_1462_13743"
-          />
-        </filter>
-        <clipPath id="clip0_1462_13743">
-          <rect width="436.5" height="279.5" rx="12" fill="white" />
-        </clipPath>
-        <clipPath id="clip1_1462_13743">
-          <rect
-            width="104"
-            height="208"
-            fill="white"
-            transform="translate(16.5 52.5)"
-          />
+        <clipPath id="clip0_1469_4888">
+          <rect width="240" height="135" rx="4" fill="white" />
         </clipPath>
       </defs>
     </svg>

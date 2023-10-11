@@ -5,6 +5,7 @@ import { UseBoundStore } from "zustand/react";
 import { Mutate, StoreApi } from "zustand/vanilla";
 
 import { Widget, WidgetState } from "@statflo/widget-sdk";
+import usePublishMainWidgetEvents from "../hooks/usePublishMainWidgetEvents";
 
 type WidgetProps = {
   widget: Widget;
@@ -41,6 +42,8 @@ export const RemoteComponent: FC<WidgetProps> = ({
 }) => {
   const events = store((state) => state.events);
   const [loading, setLoading] = useState(true);
+
+  usePublishMainWidgetEvents(loading);
 
   const onLoad = (e: any) => {
     // Populate Iframe widgets with any events they may have missed before loading

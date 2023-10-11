@@ -1,8 +1,13 @@
 import { useState } from "react";
 import WidgetForm from "../containers/WidgetForm";
 import { useWidgetContext } from "../providers/WidgetProvider";
-import { Illustration, Table } from "@statflo/ui";
+import { Table } from "@statflo/ui";
 import DeleteWidget from "../containers/DeleteWidget";
+
+const positions = {
+  sendable: "Sendable",
+  right_panel: "Right Panel",
+};
 
 const columns = [
   {
@@ -21,7 +26,7 @@ const columns = [
     id: "label",
     header: "Label",
     accessorKey: "label",
-    cell: (info: any) => info.getValue() ?? "-",
+    cell: (info: any) => (info.getValue().length !== 0 ? info.getValue() : "-"),
   },
   {
     id: "url",
@@ -33,7 +38,8 @@ const columns = [
     id: "position",
     header: "Position",
     accessorKey: "scopes",
-    cell: (info: any) => info.getValue()[0].positions[0],
+    cell: (info: any) =>
+      positions[info.getValue()[0].positions[0] as keyof typeof positions],
   },
   {
     id: "priority",
@@ -83,13 +89,8 @@ const WidgetManager = () => {
                 Whoops! No Results Found
               </p>
               <p className="text-20 text-blueGrey-600 dark:text-blueGrey-300 mb-8">
-                Try adding a widget to get started!
+                Add a new widget to get started
               </p>
-              <Illustration
-                height="h-40"
-                illustration="noResultsAlt"
-                width="w-120"
-              />
             </>
           }
           pagination={{

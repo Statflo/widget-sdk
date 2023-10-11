@@ -8,9 +8,13 @@ const Documentation = () => {
       <div>
         <h2 className="font-bold text-24 mb-2">Getting Started</h2>
         <p>
-          This playground is meant as a way to test out new widgets easily
+          This playground is meant as a way to test out new widgets easily,
           without having to go through the process of fully integrating into the
-          main Statflo app.
+          main Statflo app.{" "}
+          <span className="text-blueGrey-600 dark:text-blueGrey-300">
+            Note: Some functionality has been disabled as it is not required
+            when creating widgets.
+          </span>
         </p>
       </div>
       <p className="">
@@ -46,10 +50,10 @@ const Documentation = () => {
         and begin testing!
       </p>
       <p>
-        Events will be automatically trigger but they can also be manually
+        Events will be automatically triggered but they can also be manually
         triggered using the Event Manager{" "}
         <Icon className="inline mb-1" color="blueGrey" icon="script" />. A log
-        of all the events that have been published can all be viewed here.
+        of all the events that have been published can be viewed there.
       </p>
     </div>
   );

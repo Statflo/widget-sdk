@@ -1,16 +1,25 @@
 import { IconButton, Tabs, classNames } from "@statflo/ui";
 import Sendables from "./Sendables";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactTextareaAutosize from "react-textarea-autosize";
 import { useConversationContext } from "../providers/ConversationProvider";
+import { WidgetEvents, useWidgetContext } from "../providers/WidgetProvider";
 
 const MessageInput = () => {
   const { activeConversation, addMessage } = useConversationContext();
+  const { events, getLatestEvent } = useWidgetContext();
   const [message, setMessage] = useState("");
   const inputRef = useRef<any>(null);
 
-  const handleAppend = (value: string) => setMessage(`${message} ${value}`);
-  const handleReplace = (value: string) => setMessage(value);
+  useEffect(() => {
+    const latest = getLatestEvent();
+    if (latest?.type === WidgetEvents.APPEND_MESSAGE) {
+      setMessage((prevState) => `${prevState} ${latest.data}`);
+    }
+    if (latest?.type === WidgetEvents.REPLACE_MESSAGE) {
+      setMessage(latest.data);
+    }
+  }, [events, getLatestEvent]);
 
   if (!activeConversation) return null;
 
@@ -33,7 +42,7 @@ const MessageInput = () => {
         ]}
       />
       <div className="flex p-4 flex-1 items-center gap-4 bg-background-light dark:bg-blueGrey-900">
-        <Sendables onAppend={handleAppend} onReplace={handleReplace} />
+        <Sendables />
         <div className="flex-1">
           <div className="group relative w-full flex items-center justify-center bg-blueGrey-100 rounded-2xl min-h-[44px] border-2 dark:bg-darkMode-600 focus-within:border-blue-400 border-transparent">
             <ReactTextareaAutosize

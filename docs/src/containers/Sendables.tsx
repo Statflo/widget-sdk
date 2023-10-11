@@ -3,36 +3,26 @@ import { useEffect, useState } from "react";
 import { Dialog, IconButton, Menu, Popover } from "@statflo/ui";
 
 import { RemoteComponent } from "../components/RemoteComponent";
-import usePublishMainWidgetEvents from "../hooks/usePublishMainWidgetEvents";
 import { WidgetEvents, useWidgetContext } from "../providers/WidgetProvider";
 import Placeholder from "../components/Placeholder";
 
-type SendablesProps = {
-  onAppend: (value: string) => void;
-  onReplace: (value: string) => void;
-};
-
-const Sendables = ({ onAppend, onReplace }: SendablesProps) => {
+const Sendables = () => {
   const { sendableWidgets, events, getLatestEvent, store } = useWidgetContext();
 
   const [activeWidget, setActiveWidget] = useState<Widget>();
   const [isWidgetOpen, setWidgetOpen] = useState<boolean>(false);
 
-  usePublishMainWidgetEvents(isWidgetOpen);
-
   useEffect(() => {
     const latest = getLatestEvent();
     if (latest?.type === WidgetEvents.APPEND_MESSAGE) {
-      onAppend(latest.data);
       setActiveWidget(undefined);
       setWidgetOpen(false);
     }
     if (latest?.type === WidgetEvents.REPLACE_MESSAGE) {
-      onReplace(latest.data);
       setActiveWidget(undefined);
       setWidgetOpen(false);
     }
-  }, [events, getLatestEvent, onAppend, onReplace]);
+  }, [events, getLatestEvent]);
 
   if (!sendableWidgets) return null;
 
