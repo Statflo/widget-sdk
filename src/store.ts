@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 as uuidv4 } from "uuid";
 import { createStore } from "zustand/vanilla";
 import "iframe-resizer/js/iframeResizer.contentWindow";

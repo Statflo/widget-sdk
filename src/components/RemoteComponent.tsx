@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import IframeResizer from "iframe-resizer-react";
 import React, { ComponentType, FC, useEffect, useState } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
@@ -62,7 +63,7 @@ export const RemoteComponent: FC<WidgetProps> = ({
     }
   }, []);
 
-  const onLoad = (e: any) => {
+  const onLoad = () => {
     // Populate Iframe widgets with any events they may have missed before loading
     const iframe = document.getElementById(widget.id) as HTMLIFrameElement;
 
