@@ -54,22 +54,16 @@ Two example widgets are provided, one using React and one using vanilla javascri
 
 ### Widget Playground
 
-We have provided a playground where you can test your widgets as you build them. We recommend building the example widgets
+We have provided a live playground at [https://statflo.github.io/widget-sdk/conversations](https://statflo.github.io/widget-sdk/conversations) 
+where you can test your widgets as you build them. We recommend building the example widgets
 above and testing them in the playground so you can get familiar with this project.
 
-1. Install the Widget Playground
-  ```
-  yarn --cwd docs install
-  ```
-2. Start the Widget Playground
-  ```
-  yarn --cwd docs start
-  ```
-3. View the Widget Playground at [http://localhost:3000/widget-sdk/conversations](http://localhost:3000/widget-sdk/conversations)
-4. Check out "Getting Started" guide in the left-hand navigation menu.
-5. Click on "Widget Manager" in the left-hand navigation menu and try adding the example widgets above by clicking "Add Widget" in the top left.
-6. Click on "Conversations" in the left-hand navigation to view your newly added widgets. 
-7. Click on "Event Manager" to simulate sending events to your widgets.
+#### Suggested Workflow
+
+1. Check out "Getting Started" guide in the left-hand navigation menu.
+2. Click on "Widget Manager" in the left-hand navigation menu and try adding the example widgets above by clicking "Add Widget" in the top left.
+3. Click on "Conversations" in the left-hand navigation to view your newly added widgets.
+4. Click on "Event Manager" to simulate sending events to your widgets.
 
 ## Creating a widget
 
