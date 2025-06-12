@@ -55,7 +55,7 @@ Two example widgets are provided, one using React and one using vanilla javascri
 ### Widget Playground
 
 We have provided a playground where you can test your widgets as you build them. We recommend building the example widgets
-above and testing them in the playgound so you can get familiar with this project.
+above and testing them in the playground so you can get familiar with this project.
 
 1. Install the Widget Playground
   ```
