@@ -87,9 +87,9 @@ import useWidgetStore from "@statflo/widget-sdk";
 
 ```typescript
 import useWidgetStore from "@statflo/widget-sdk";
-import { create } from "zustand";
+import { useStore } from "zustand";
 
-const useBoundWidgetStore = create(useWidgetStore);
+const publishEvent = useStore(useWidgetStore, (state: WidgetState) => state.publishEvent);
 ```
 
 ### Publishing an event
@@ -109,7 +109,7 @@ publishEvent(new WidgetEvent("MESSAGE_UPDATED", "<YOUR MESSAGE>"));
 ```typescript
 import { WidgetEvent } from "@statflo/widget-sdk";
 
-const { publishEvent } = useBoundWidgetStore((state) => state);
+const publishEvent = useStore(useWidgetStore, (state: WidgetState) => state.publishEvent);
 
 useEffect(() => {
   // This event only fires on component initialization
