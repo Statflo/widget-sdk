@@ -24,6 +24,10 @@ const App = () => {
     return devices[Math.floor(Math.random() * devices.length)];
   }
 
+  const sendFollowUp = () => {
+    publishEvent(new WidgetEvent("REPLACE_MESSAGE", `Hi, how are you enjoying your ${device}?`));
+  }
+
   useEffect(() => {
     const latest = getLatestEvent();
 
@@ -35,21 +39,19 @@ const App = () => {
       case "CURRENT_ACCOUNT_ID":
         setAccount(latest.data);
         setDevice(getDevice());
-
-        publishEvent(new WidgetEvent("REPLACE_MESSAGE", `Hi, how are you enjoying your ${device}?`));
         break;
     }
   }, [device, events, getLatestEvent, publishEvent]);
 
   return (
-    <div className="container g-0 border-top border-2">
+    <div className="container g-0 border-top border-2 p-3">
       <div className="row justify-content-center no-gutters g-0">
         <h6 className="text-center pt-2">
           React Inventory Widget
         </h6>
 
         <form
-          className="col pt-3 mb-4 border-bottom border-2"
+          className="col pt-3 border-bottom border-2"
         >
           <fieldset disabled>
             <div className="mb-3">
@@ -80,6 +82,9 @@ const App = () => {
             </div>
           </fieldset>
         </form>
+        <button id="send" className="btn btn-primary" disabled={!device} onClick={sendFollowUp}>
+          Send Follow Up
+        </button>
       </div>
     </div>
   );

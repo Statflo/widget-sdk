@@ -1,20 +1,24 @@
-import useWidgetStore, { WidgetEvent } from "@statflo/widget-sdk";
+import useWidgetStore, {WidgetEvent} from "@statflo/widget-sdk";
 
 const root = document.getElementById("root");
 
-const { publishEvent } = useWidgetStore.getState();
+const {publishEvent} = useWidgetStore.getState();
 
 let account = "";
 let device = "";
 
 const getDevice = () => {
   const devices = [
-    'Samsung Galaxy S25 Ultra',
-    'Apple iPhone 16 Pro Max',
-    'Google Pixel 9a',
+    "Samsung Galaxy S25 Ultra",
+    "Apple iPhone 16 Pro Max",
+    "Google Pixel 9a",
   ];
 
   return devices[Math.floor(Math.random() * devices.length)];
+}
+
+const sendFollowUp = () => {
+  publishEvent(new WidgetEvent("REPLACE_MESSAGE", `Hi, how are you enjoying your ${device}?`));
 }
 
 const render = (state) => {
@@ -25,21 +29,19 @@ const render = (state) => {
       case "CURRENT_ACCOUNT_ID":
         account = latest.data;
         device = getDevice();
-
-        publishEvent(new WidgetEvent("REPLACE_MESSAGE", `Hi, how are you enjoying your ${device}?`));
         break;
     }
   }
 
   root.innerHTML = `
-    <div class="container g-0 border-top border-2">
+    <div class="container g-0 border-top border-2 p-3">
       <div class="row justify-content-center no-gutters g-0">
         <h6 class="text-center pt-2">
           Vanilla JS Inventory Widget
         </h6>
 
         <form
-          class="col pt-3 mb-4 border-bottom border-2"
+          class="col pt-3 border-bottom border-2"
         >
           <fieldset disabled>
             <div class="mb-3">
@@ -70,9 +72,14 @@ const render = (state) => {
             </div>
           </fieldset>
           </form>
+          <button id="send" class="btn btn-primary" ${device ? "" : "disabled"}>
+            Send Follow Up
+          </button>
         </div>
       </div>
 `;
+
+  document.getElementById("send").addEventListener("click", sendFollowUp, false);
 };
 
 render(useWidgetStore.getState());
