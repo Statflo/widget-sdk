@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "iframe-resizer-react";
-import { useStore } from "zustand";
+import {useStore} from "zustand";
 import "./App.css";
 
 import useWidgetStore, {WidgetEvent, WidgetState} from "@statflo/widget-sdk";
@@ -82,7 +82,8 @@ const App = () => {
             </div>
           </fieldset>
         </form>
-        <button id="send" className="btn btn-primary" disabled={!device} onClick={sendFollowUp}>
+        <button id="send" className="btn btn-primary" disabled={!device}
+                onClick={sendFollowUp}>
           Send Follow Up
         </button>
       </div>
