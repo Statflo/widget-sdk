@@ -54,6 +54,9 @@ Two example widgets are provided, one using React and one using vanilla javascri
 
 ### Widget Playground
 
+We have provided a playground where you can test your widgets as you build them. We recommend building the example widgets
+above and testing them in the playgound so you can get familiar with this project.
+
 1. Install the Widget Playground
   ```
   yarn --cwd docs install
@@ -67,9 +70,6 @@ Two example widgets are provided, one using React and one using vanilla javascri
 5. Click on "Widget Manager" in the left-hand navigation menu and try adding the example widgets above by clicking "Add Widget" in the top left.
 6. Click on "Conversations" in the left-hand navigation to view your newly added widgets. 
 7. Click on "Event Manager" to simulate sending events to your widgets.
-
-We have provided a playground where you can test your widgets as you build them. We recommend building the example widgets
-above and testing them in the playgound so you can get familiar with this project.
 
 ## Creating a widget
 
