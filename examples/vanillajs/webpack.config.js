@@ -8,10 +8,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "index.js",
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3002/",
   },
   devServer: {
-    port: 3000,
+    port: 3002,
     allowedHosts: "all",
   },
   plugins: [

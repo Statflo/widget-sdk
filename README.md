@@ -22,6 +22,49 @@
 npm install @statflo/widget-sdk # or yarn add @statflo/widget-sdk
 ```
 
+## Getting Started
+
+### Example Widgets
+
+Two example widgets are provided, one using React and one using vanilla javascript.
+
+#### React Example Widget
+
+1. Install the React example widget
+  ```
+  yarn --cwd examples/react install
+  ```
+2. Start the React example widget
+  ```
+  yarn --cwd examples/react start
+  ```
+3. View the React example widget at [http://localhost:3001](http://localhost:3001)
+
+#### Vanilla JS Example Widget
+
+1. Install the Vanilla JS example widget
+  ```
+  yarn --cwd examples/vanillajs install
+  ```
+2. Start the Vanilla JS example widget
+  ```
+  yarn --cwd examples/vanillajs start
+  ```
+3. View the Vanilla JS example widget at [http://localhost:3002](http://localhost:3002)
+
+### Widget Playground
+
+We have provided a live playground at [https://statflo.github.io/widget-sdk/conversations](https://statflo.github.io/widget-sdk/conversations) 
+where you can test your widgets as you build them. We recommend building the example widgets
+above and testing them in the playground so you can get familiar with this project.
+
+#### Suggested Workflow
+
+1. Check out "Getting Started" guide in the left-hand navigation menu.
+2. Click on "Widget Manager" in the left-hand navigation menu and try adding the example widgets above by clicking "Add Widget" in the top left.
+3. Click on "Conversations" in the left-hand navigation to view your newly added widgets.
+4. Click on "Event Manager" to simulate sending events to your widgets.
+
 ## Creating a widget
 
 Please see our [Examples](https://github.com/Statflo/widget-sdk/tree/main/examples).
@@ -38,9 +81,9 @@ import useWidgetStore from "@statflo/widget-sdk";
 
 ```typescript
 import useWidgetStore from "@statflo/widget-sdk";
-import { create } from "zustand";
+import { useStore } from "zustand";
 
-const useBoundWidgetStore = create(useWidgetStore);
+const publishEvent = useStore(useWidgetStore, (state: WidgetState) => state.publishEvent);
 ```
 
 ### Publishing an event
@@ -60,7 +103,7 @@ publishEvent(new WidgetEvent("MESSAGE_UPDATED", "<YOUR MESSAGE>"));
 ```typescript
 import { WidgetEvent } from "@statflo/widget-sdk";
 
-const { publishEvent } = useBoundWidgetStore((state) => state);
+const publishEvent = useStore(useWidgetStore, (state: WidgetState) => state.publishEvent);
 
 useEffect(() => {
   // This event only fires on component initialization

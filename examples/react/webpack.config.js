@@ -5,10 +5,10 @@ module.exports = {
   entry: "./src/index",
   mode: "development",
   output: {
-    publicPath: 'http://localhost:3000/'
+    publicPath: 'http://localhost:3001/'
   },
   devServer: {
-    port: 3000,
+    port: 3001,
     allowedHosts: 'all'
   },
   module: {

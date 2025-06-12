@@ -1638,15 +1638,19 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@statflo/widget-sdk@./../../":
-  version "0.4.2"
+"@statflo/widget-sdk@latest":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@statflo/widget-sdk/-/widget-sdk-0.4.10.tgz#7d48e3a33eea8eabbe6763fe98432cd4590d7071"
+  integrity sha512-JEwQ/pLBSti5fUj831OfX1EYhj5wBZO2qZS9KzYJXxcdhipg4uDhkMdrAhdY0u+OdPluWUGEAzSBYIR1GK9BcQ==
   dependencies:
     iframe-resizer "^4.3.2"
+    iframe-resizer-react "^1.1.0"
+    react "^18.2.0"
+    react-error-boundary "^3.1.4"
     typescript "^4.9.3"
     uuid "^9.0.0"
-    zustand "^4.3.3"
+    zustand "^5.0.3"
   optionalDependencies:
-    react ">=16.8"
     use-sync-external-store "1.2.0"
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
@@ -7598,7 +7602,7 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react@>=16.8, react@^18.2.0:
+react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -9374,9 +9378,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zustand@^4.3.3:
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.3.6.tgz#ce7804eb75361af0461a2d0536b65461ec5de86f"
-  integrity sha512-6J5zDxjxLE+yukC2XZWf/IyWVKnXT9b9HUv09VJ/bwGCpKNcaTqp7Ws28Xr8jnbvnZcdRaidztAPsXFBIqufiw==
-  dependencies:
-    use-sync-external-store "1.2.0"
+zustand@^5.0.3:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-5.0.5.tgz#3e236f6a953142d975336d179bc735d97db17e84"
+  integrity sha512-mILtRfKW9xM47hqxGIxCv12gXusoY/xTSHBYApXozR0HmQv299whhBeeAcRy+KrPPybzosvJBCOmVjq6x12fCg==
