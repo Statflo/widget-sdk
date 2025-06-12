@@ -9,7 +9,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@statflo/widget-sdk": "./../../",
+    "@statflo/widget-sdk": "latest",
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.75.0"
   },

@@ -1,37 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "iframe-resizer-react";
-import { create } from "zustand";
+import { useStore } from "zustand";
 import "./App.css";
 
-import useWidgetStore, { WidgetEvent } from "@statflo/widget-sdk";
+import useWidgetStore, {WidgetEvent, WidgetState} from "@statflo/widget-sdk";
 
-const useBoundWidgetStore = create(useWidgetStore);
 
 const App = () => {
-  const { events, publishEvent, getLatestEvent } = useBoundWidgetStore(
-    (state) => state
-  );
+  const events = useStore(useWidgetStore, (state: WidgetState) => state.events)
+  const publishEvent = useStore(useWidgetStore, (state: WidgetState) => state.publishEvent)
+  const getLatestEvent = useStore(useWidgetStore, (state: WidgetState) => state.getLatestEvent)
 
-  const [token, setToken] = useState("");
-  const [email, setEmail] = useState("");
+  const [account, setAccount] = useState("");
+  const [device, setDevice] = useState("");
 
-  const fetchUser = (token: string) => {
-    fetch("https://app.statflo.com/v2/api/auth/me", {
-      headers: { authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        setEmail(json.user.email);
-      })
-      .catch(() => {});
-  };
+  const getDevice = () => {
+    const devices = [
+      'Samsung Galaxy S25 Ultra',
+      'Apple iPhone 16 Pro Max',
+      'Google Pixel 9a',
+    ];
 
-  useEffect(() => {
-    // Simulate a token being emitted from the Statflo UI to this widget.
-    // If you'd like to test with a live token it can be acquired
-    // at https://app.statflo.com/v2/api/auth/me after first logging in.
-    publishEvent(new WidgetEvent("TOKEN_UPDATED", "<YOUR TEST TOKEN>"));
-  }, []);
+    return devices[Math.floor(Math.random() * devices.length)];
+  }
 
   useEffect(() => {
     const latest = getLatestEvent();
@@ -41,36 +32,48 @@ const App = () => {
     }
 
     switch (latest.type) {
-      case "TOKEN_UPDATED":
-        setToken(latest.data);
+      case "CURRENT_ACCOUNT_ID":
+        setAccount(latest.data);
+        setDevice(getDevice());
+
+        publishEvent(new WidgetEvent("REPLACE_MESSAGE", `Hi, how are you enjoying your ${device}?`));
         break;
     }
-  }, [events]);
-
-  useEffect(() => {
-    if (!token) {
-      return;
-    }
-
-    fetchUser(token);
-  }, [token]);
+  }, [device, events, getLatestEvent, publishEvent]);
 
   return (
     <div className="container g-0 border-top border-2">
       <div className="row justify-content-center no-gutters g-0">
-        <h6 className="text-center pt-2">React Widget</h6>
+        <h6 className="text-center pt-2">
+          React Inventory Widget
+        </h6>
 
-        <form className="col pt-3 mb-4 border-bottom border-2">
+        <form
+          className="col pt-3 mb-4 border-bottom border-2"
+        >
           <fieldset disabled>
             <div className="mb-3">
-              <label className="form-label visually-hidden" htmlFor="Email">
-                Email
+              <label className="form-label" htmlFor="account">
+                Account
               </label>
               <input
-                name="email"
+                name="account"
                 className="form-control form-control-sm"
-                id="email"
-                value={email}
+                id="account"
+                value={account}
+                readOnly={true}
+                placeholder="..."
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="device">
+                Device
+              </label>
+              <input
+                name="device"
+                className="form-control form-control-sm"
+                id="device"
+                value={device}
                 readOnly={true}
                 placeholder="..."
               />

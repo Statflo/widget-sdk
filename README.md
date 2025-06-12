@@ -22,6 +22,55 @@
 npm install @statflo/widget-sdk # or yarn add @statflo/widget-sdk
 ```
 
+## Getting Started
+
+### Example Widgets
+
+Two example widgets are provided, one using React and one using vanilla javascript.
+
+#### React Example Widget
+
+1. Install the React example widget
+  ```
+  yarn --cwd examples/react install
+  ```
+2. Start the React example widget
+  ```
+  yarn --cwd examples/react start
+  ```
+3. View the React example widget at [http://localhost:3001](http://localhost:3001)
+
+#### Vanilla JS Example Widget
+
+1. Install the Vanilla JS example widget
+  ```
+  yarn --cwd examples/vanillajs install
+  ```
+2. Start the Vanilla JS example widget
+  ```
+  yarn --cwd examples/vanillajs start
+  ```
+3. View the Vanilla JS example widget at [http://localhost:3002](http://localhost:3002)
+
+### Widget Playground
+
+1. Install the Widget Playground
+  ```
+  yarn --cwd docs install
+  ```
+2. Start the Widget Playground
+  ```
+  yarn --cwd docs start
+  ```
+3. View the Widget Playground at [http://localhost:3000/widget-sdk/conversations](http://localhost:3000/widget-sdk/conversations)
+4. Check out "Getting Started" guide in the left-hand navigation menu.
+5. Click on "Widget Manager" in the left-hand navigation menu and try adding the example widgets above by clicking "Add Widget" in the top left.
+6. Click on "Conversations" in the left-hand navigation to view your newly added widgets. 
+7. Click on "Event Manager" to simulate sending events to your widgets.
+
+We have provided a playground where you can test your widgets as you build them. We recommend building the example widgets
+above and testing them in the playgound so you can get familiar with this project.
+
 ## Creating a widget
 
 Please see our [Examples](https://github.com/Statflo/widget-sdk/tree/main/examples).
